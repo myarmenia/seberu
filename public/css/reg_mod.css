@@ -1,0 +1,138 @@
+#staticBackdrop{
+    width: 60%;
+    margin: 0 auto;
+}
+#header {
+    display: flex;
+    justify-content: center;
+    font-size: 2vw;
+}
+#header > button{
+    display: flex;
+    justify-content: end;
+}
+#header > h5{
+  
+    margin-bottom: 30px;
+    margin-top: 25px;
+    margin-left: 330px;
+    font-weight: 700;
+    font-size: 1.5vw;
+}
+.ff{
+    width: 22vw;
+    height: 3vw;
+    border-radius: 7px;
+    margin: 10px;
+}
+.kk{
+    font-size: 2vw;
+    height: 2vw;
+    width: 3vw;
+}
+.mb-3{
+    text-align: center
+}
+.modal-dialog{
+    max-width: 935px !important;
+    margin: 1.75rem auto;
+}
+.modal-body {
+    position: relative;
+    flex: 1 1 auto;
+    padding: 1rem;
+    width: 30vw;
+    margin: 0 auto;
+}
+.p-viewer {
+    position: relative;
+    margin: -50px 10px;
+    float: right;
+}
+
+.fa-eye {
+  color: #000;
+}
+#sel{
+    height: 9vh;
+    width: 23vw;
+  
+    margin-left: 4vw;
+    margin-top: 1vw;
+    color:rgb(129, 40, 231);
+    font-size: 1.4vw;
+    font-weight:500
+
+}
+#r1, #r2{
+    color:rgb(129, 40, 231);
+    font-size: 1.4vw;
+    
+}
+#rbs{
+    color:rgb(129, 40, 231);
+    font-size: 1.4vw;
+    margin-left: 30px;
+}
+#inpg{
+    width: 96%;
+    border: 1px solid;
+    margin-top: 20px;
+    margin-left: 5px;
+    height: 53px;
+    border-radius: 10px;
+    background-image: linear-gradient(to right, rgb(107 24 243), rgb(197 85 217));
+    color: white;
+    font-size: 1.5vw;
+    letter-spacing: 1.5px;
+    padding-top: 7px;
+    /* padding-left: 76px; */
+    text-align: center;
+
+}
+#end{
+    width: 88%;
+    text-align: justify;
+    margin: 0 auto;
+    font-size: 1.1vw;
+    font-weight: 500;
+    margin-top: 23px;
+    margin-bottom: 40px;
+    color:black
+}
+.psw{
+    height: 45px
+}
+.icn{
+    border-right: 0! important;
+}
+.input-group-text {
+    display: flex;
+    align-items: center;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background: white!important;
+    border: 1px solid #ced4da;
+    border-left: white;
+}
+/* #toggle{
+    display:none
+}
+#toggle1{
+    display:none
+} */
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 51%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 0.3rem;
+    outline: 0;
+  
+}

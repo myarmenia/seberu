@@ -1,0 +1,105 @@
+.container{
+    display: flex;
+    height: 60px;
+    border: 1px solid;
+    padding: 0;
+    margin-top:25px
+    
+}
+.d-flex{
+    border: 1px solid
+}
+.logo{
+    width:140px
+}
+.btn1{
+    height: 51px;
+    width: 202px;
+    border-radius: 6px;
+    background-image: linear-gradient(to right, rgb(107 24 243), rgb(197 85 217));
+    color: white;
+    font-size: 21px;
+}
+.filter-div{
+    display: flex;
+    margin:10px;
+    text-align:center;
+    height: 38px
+}
+#p-1{
+    margin-left: 15px;
+    height: 47px;
+    width: 730px;
+   
+}
+.fnc{
+    display: flex;
+    border:1px solid;
+    width:238px;
+    height:51px;
+    font-size: 14px;
+    padding: 0
+}
+.icns{
+   
+    border:1px solid;
+    width: 71px
+}
+
+#inp-gr > button{
+    width:170px;
+    background-color:rgb(204, 56, 204)! important;
+    color: white;
+    font-size:1.5vw;
+    
+}
+
+#inp-gr{
+    width: 725px;
+    height: 50px;
+    margin-left:15px
+}
+.ipt{
+    text-align: center;
+}
+.hed{
+    display: flex;
+    padding:0;
+    width: 100%;
+}
+.hed > div{
+    border: 1px solid;
+    margin: 25px;
+    font-size: 0.9vw;
+    font-weight: 500;
+}
+#hed1{
+    display:flex;
+    justify-content: center;
+    width: 70%;
+    height: 40px;
+    border:1px solid;
+  
+}
+#hed1> div{
+    border: 1px solid;
+    margin-left: 30px;
+    font-weight: 700;
+    font-size: 1vw;
+}
+h5{
+    color:blue;
+    font-size: 2vw;
+}
+#ind{
+    margin-left:107px;
+    font-size:20px
+}
+span{
+    font-weight:500;
+    font-size: 1vw;
+}
+
+
+
+

@@ -1,0 +1,403 @@
+.container{
+    display: flex;
+    height: 60px;
+    /* border: 1px solid; */
+    padding: 0;
+    margin-top: 25px
+}
+.d-flex{
+    border: 1px solid
+}
+.logo{
+    width:140px
+}
+.btn1{
+    height: 51px;
+    width: 202px;
+    border-radius: 6px;
+    background-image: linear-gradient(to right, rgb(107 24 243), rgb(197 85 217));
+    color: white;
+    font-size: 21px;
+}
+.filter-div{
+    display: flex;
+    margin:10px;
+    text-align:center
+}
+#p-1{
+    margin-left: 15px;
+    height: 47px;
+    width: 730px;
+   
+}
+.fnc{
+    display: flex;
+    /* border:1px solid; */
+    width:238px;
+    height:51px;
+    font-size: 14px;
+    padding: 0
+}
+.icns{
+ width: 79px
+}
+
+#inp-gr > button{
+    width:170px;
+    background-color:rgb(204, 56, 204)! important;
+    color: white;
+    font-size:1.5vw;
+    
+}
+
+#inp-gr{
+    width: 725px;
+    height: 50px;
+    margin-left:15px
+}
+.ipt{
+    text-align: center;
+}
+.hed{
+    display: flex;
+    padding:0;
+    width: 100%;
+}
+.hed > div{
+/* border: 1px solid; */
+margin:25px
+}
+#hed1{
+    display:flex;
+    justify-content: center;
+    width: 70%;
+    height: 60px;
+    /* border:1px solid; */
+  
+}
+#hed1> div{
+    /* border: 1px solid; */
+    margin-left: 30px;
+    font-weight: 700;
+    font-size: 1.3vw;
+}
+h5{
+    color:blue;
+    font-size: 2vw;
+}
+p{
+    color:blue;
+    font-size: 1.2vw;
+
+}
+.cnt{
+    height: 375px;
+}
+.btf{
+   height:390px;
+    background: url("../images/Group 22.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  
+}
+
+.crs{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+.cnt{
+   
+    height: 473px;
+    /* border: 1px solid; */
+    width: 87%;
+    margin-left: 100px;
+}
+.cnt>div{
+    /* border: 1px solid */
+}
+#first, #second{
+    font-size: 2vw;
+    height: 60px;
+    /* border: 1px solid; */
+    width: 311px;
+    margin-left: 481px;
+    text-align: center;
+    margin-top: 25px;
+    font-weight: 500;
+}
+#first > div{
+    /* border: 1px solid */
+}
+#second> div{
+    /* border: 1px solid */
+}
+#sec{
+    display: flex;
+    height: 384px;
+    width: auto;
+    /* border: 1px solid; */
+    text-align: center;
+}
+#thrid{
+    font-size: 2vw;
+    height: 60px;
+    /* border: 1px solid; */
+    width: 411px;
+    margin-left: 25px;
+    text-align: center;
+    margin-top: 25px;
+    font-weight: 500; 
+}
+.d1{
+    height: 383px;
+    width: 17%;
+    /* border: 1px solid; */
+}
+#second{
+    display: flex;
+    
+}
+#second > div{
+   /* border:1px solid  */
+}
+#imgs{
+    height: 192px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+p{
+    text-align: center;
+    color:red;
+    margin-top:8px;
+    font-size:1.5vw
+
+}
+h6{
+    text-align: center;
+    font-size: 13px;
+    margin: 0 auto;
+}
+.btt{
+    width: 120px;
+    height: 35px;
+    color:white;
+    border-radius: 6px;
+    background-image: linear-gradient(to right,rgb(91, 103, 238), #bc82e9);
+    margin-top: 15px;
+}
+.cnt1{
+   display:flex;
+   flex-direction: column;
+    height: 550px;
+    /* border: 1px solid; */
+    width: 87%;
+    margin-left: 100px;
+}
+#books{
+    display:flex;
+    height: 463px;
+    /* border: 1px solid */
+}
+#book{
+    display:flex;
+    flex-wrap: wrap;
+/* border:1px solid; */
+width: 80%;
+}
+.boo{
+    font-weight:600;
+    font-size:25px
+}
+#book1{
+/* border: 1px solid; */
+width: 20%;
+
+background: rgb(227 219 216);
+}
+.bks{
+    height: 200px;
+    width: 320px;
+    /* border: 1px solid; */
+    margin: 13px;
+    background-image: url('../images/books.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+#srn{
+    width: 273px;
+    margin-top: 21px;
+}
+h4{
+    text-align: center;
+}
+#lnk{
+    background-image:url('../images/image 27.png');
+    background-size: cover;
+    position: absolute;
+    height: 565px;
+    width: 87%;
+    margin-left: 99px;
+    /* border: 1px solid; */
+}
+#dv{
+    height: 60px;
+    width: 203px;
+    /* border:1px solid */
+}
+#dv5{
+    position: relative;
+    height: 49px;
+    width: 447px;
+    /* border: 1px solid; */
+    transform: rotate(-90deg);
+    top: -221px;
+    left: -200px;
+}
+
+#dv1{
+    height: 100px;
+    width: 377px;
+    /* border: 1px solid; */
+    left: 202px;
+    position: relative;
+    top: -60px;
+}
+#dv2{
+    position: relative;
+    height: 100px;
+    width: 222px;
+    /* border: 1px solid; */
+    left: 578px;
+    top: -160px;
+}
+#dv3{
+    position: relative;
+    height: 100px;
+    width: 236px;
+    /* border: 1px solid; */
+    top: -260px;
+    left: 799px;
+}
+#dv4{
+    position: relative;
+    height: 120px;
+    width: 287px;
+    /* border: 1px solid; */
+    top: -360px;
+    left: 1034px;
+}
+#four-divs{
+    display: flex;
+    position: absolute;
+    height: 295px;
+    width: 87%;
+    margin-left: 99px;
+    margin-top: 564px;
+    /* border: 1px solid; */
+}
+#four-divs>div{
+    height: 290px;
+    width: 23%;
+    border: 1px solid;
+    margin-left: 21px;
+    margin-top: 5px;
+    background-size:cover
+}
+#rem{
+    background-image: url('../images/rem.jpg')
+}
+#igr{
+    background-image: url('../images/igr.jpg')   
+}
+#tre{
+    background-image: url('../images/tre.jpg') 
+}
+#ntb{
+    background-image: url('../images/ntb.jpg')
+}
+p{
+    font-size:2vw
+}
+h3{
+    color:white
+    
+}
+#rem> h3{
+    margin-top:40px;
+    text-align:center;
+   
+}
+#igr >h3{
+    margin-top:40px;
+    text-align:center; 
+   
+}
+#tre > h3{
+    margin-top:120px;
+    text-align:center; 
+  
+}
+#ntb > h3{
+    margin-top:230px;
+    text-align:center; 
+    font-size: 1.5vw
+}
+footer{
+    background: #f2f2f2;
+    height: 300px;
+    margin-top:900px;
+}
+#parent1{
+    display:flex;
+    width: 47%;
+    height: 298px;
+    padding:35px;
+    margin:0 auto
+}
+.n1{
+    width: 30%;
+    line-height:2;
+    font-weight: 600;
+    font-size: 1.1vw;
+    color: rgb(90, 90, 90);
+    padding-left: 3vw;
+}
+.n2{
+    width: 38%;
+    line-height:2;
+    font-weight: 600;
+    font-size: 1.1vw;
+    color: rgb(90, 90, 90);
+    padding-left: 2vw;
+}
+
+.sp{
+    font-weight:700;
+    color:black
+}
+#sect{
+    background:rgb(86, 85, 172);
+    height: 60px;
+    text-align:center;
+    color:white;
+    font-size:25px;
+    padding-top:10px
+}
+
+#spp{
+    width: 25%;
+}
+#endd{
+    color: var(--bs-indigo);
+      font-size: 1.4vw;
+}
+.modal-body {
+    position: relative;
+    flex: 1 1 auto;
+    width: 40vw;
+    text-align: center;
+}
+
+
+
