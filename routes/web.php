@@ -43,7 +43,7 @@ Route::group(['prefix' => 'profile','middleware' => ['verified','auth','guest']]
       Route::get('/',[OrderController::class,'index'])->name('orders');
   });
 
-  Route::group(['prefix' => 'product','middleware' => ['guest']], function(){
+  Route::group(['prefix' => 'product'], function(){
       Route::get('/',[ProductController::class,'index'])->name('product');
   });
 
