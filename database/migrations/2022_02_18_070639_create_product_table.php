@@ -19,6 +19,8 @@ class CreateProductTable extends Migration
             $table->string('name');
             $table->bigInteger('price');
             $table->bigInteger('sale_price')->nullable();
+            $table->longText('description')->nullable();
+            
 
             $table->foreign('category_id')
             ->references('id')
