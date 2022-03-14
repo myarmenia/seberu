@@ -12,9 +12,17 @@ class Product extends Model
     protected $fillable = ['name','price','sale_price','category_id'];
 
 
+//    public function characts(){
+//      return $this->belongsToMany(CategoryCharact::class,'product_chars','product_id','category_chars_id')->withPivot('value as value');
+//    }
+
+
     public function characts(){
-      return $this->belongsToMany(ProductCharact::class,'product_chars','product_id','characteristic_id')->withPivot('value as value');
+        return $this->hasMany(ProductCharact::class,'product_id')->join('characteristics','product_chars.chars_id','=','characteristics.id');
     }
+
+
+
 
     public function category(){
       return $this->belongsTo(Category::class);

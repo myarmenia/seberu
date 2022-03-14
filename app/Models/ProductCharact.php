@@ -9,7 +9,15 @@ class ProductCharact extends Model
 {
     use HasFactory;
 
-    protected $table = 'characteristics';
+    protected $table = 'product_chars';
 
     protected $fillable = ['name'];
+
+//    public function charact(){
+//        return $this->hasOne
+//    }
+
+    public function charactVal(){
+        return $this->hasOne(Charact::class,'id','chars_id');
+    }
 }

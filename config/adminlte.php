@@ -188,7 +188,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => '/ruler',
+    'route' => 'adminProfile',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -250,31 +250,36 @@ return [
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
-            'url'  => 'ruler/settings',
+            'route'  => 'adminSettings',
             'icon' => 'fas fa-fw fa-user',
         ],
         ['header' => 'Categories','can' => 'see_categories'],
         [
             'text' => 'categories',
-            'url'  => 'ruler/categories',
+            'route'=> 'categories',
+            'can' => 'see_categories'
+        ],
+        [
+            'text' => 'characteristics',
+            'route'=> 'characts',
             'can' => 'see_categories'
         ],
         ['header' => 'All Users','can' => 'see_users'],
         [
             'text' => 'users',
-            'url'  => 'ruler/all_users',
+            'route'  => 'adminGetUsers',
             'can' => 'see_users',
             'icon' => 'fa-solid fa-book-user'
         ],
         ['header' => 'Roles and Permissions','can' => 'roles_and_perms'],
         [
             'text' => 'roles',
-            'url'  => 'admin/roles',
+            'route'  => 'adminAddRole',
             'can' => 'roles_and_perms'
         ],
         [
             'text' => 'permissions',
-            'url'  => 'ruler/permissions',
+            'route'  => 'adminAddPerm',
             'can' => 'roles_and_perms'
         ],
 

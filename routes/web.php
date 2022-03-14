@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\ShopCart\CartController;
 use App\Http\Controllers\User\Order\OrderController;
 use App\Http\Controllers\Category\Product\ProductController;
+use App\Http\Controllers\Category\CharactController;
 
 
 /*
@@ -83,4 +84,10 @@ Route::group(['prefix' => 'ruler', 'middleware' => ['admin']], function(){
                   Route::patch('/update',[PermissionController::class,'update'])->name('adminUpdatePerm');
                   Route::delete('/delete',[PermissionController::class,'delete'])->name('adminDeletePerm');
           });
+
+    Route::group(['prefix' => 'characteristics', 'middleware' => ['permission:roles_and_perms']], function(){
+        Route::get('/',[CharactController::class,'index'])->name('characts');
+        Route::post('/',[CharactController::class,'create'])->name('adminCreateCharact');
+
+    });
   });

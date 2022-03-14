@@ -16,12 +16,12 @@ class CreateProductCharPiv extends Migration
         Schema::create('product_chars', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('category_chars_id');
+            $table->unsignedBigInteger('chars_id');
             $table->string('value');
 
-            $table->foreign('category_chars_id')
+            $table->foreign('chars_id')
             ->references('id')
-            ->on('category_chars')
+            ->on('characteristics')
             ->onDelete('cascade');
 
             $table->foreign('product_id')

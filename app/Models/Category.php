@@ -42,16 +42,10 @@ class Category extends Model
      }
 
 
-     public function test()
+
+     public function characts()
      {
-       return $this->hasManyThrough(
-          Product::class,
-          ProductCharact::class,
-         'podcast_id',
-         'user_id',
-         'id',
-         'podcast_id'
-       );
+       return $this->belongsToMany(Charact::class,'category_chars','category_id','characteristic_id');
      }
 
 

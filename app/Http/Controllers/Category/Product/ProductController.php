@@ -10,7 +10,8 @@ use App\Models\Category;
 class ProductController extends Controller
 {
     public function index(){
-      $data = Category::first();
+
+      $data = Category::with('products')->first();
       dd($data);
     }
 }
