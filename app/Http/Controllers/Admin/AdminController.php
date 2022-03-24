@@ -27,6 +27,8 @@ class AdminController extends Controller
         $userServ = new UserService;
         $userServ->editMe($validated);
 
+
+        
         return redirect()->back()->with('message','Updated');
     }
 
