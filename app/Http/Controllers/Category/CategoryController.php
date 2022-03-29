@@ -75,4 +75,15 @@ class CategoryController extends Controller
     return redirect()->back()->with('mesage','Spam');
 
   }
+
+  public function getById(Request $request){
+
+    $datas = $this->categoryServ->getAll($request->cat_id);
+    return response()->json([
+        'datas' => $datas
+    ]);
+
+
+  }
+
 }

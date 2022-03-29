@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Category;
 
 class HomeController extends Controller
 {
@@ -30,4 +31,5 @@ class HomeController extends Controller
         //dd(Auth::user()->roles->where('name',''));
         return view('home');
     }
+
 }

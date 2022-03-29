@@ -6,9 +6,8 @@ class CategoryService
 {
 
   public function getAll($id = null){
-    return Category::where('parent_id',$id)->get();
+    return Category::where('parent_id',$id)->with('child')->get();
   }
-
 
 
   public function getParents($id = null){
