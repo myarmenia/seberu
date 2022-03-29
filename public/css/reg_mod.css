@@ -12,7 +12,7 @@
     justify-content: end;
 }
 #header > h5{
-  
+
     margin-bottom: 30px;
     margin-top: 25px;
     margin-left: 330px;
@@ -56,7 +56,7 @@
 #sel{
     height: 9vh;
     width: 23vw;
-  
+
     margin-left: 4vw;
     margin-top: 1vw;
     color:rgb(129, 40, 231);
@@ -67,7 +67,7 @@
 #r1, #r2{
     color:rgb(129, 40, 231);
     font-size: 1.4vw;
-    
+
 }
 #rbs{
     color:rgb(129, 40, 231);
@@ -134,5 +134,5 @@
     border: 1px solid rgba(0,0,0,.2);
     border-radius: 0.3rem;
     outline: 0;
-  
+
 }

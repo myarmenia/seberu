@@ -13,6 +13,7 @@ use App\Http\Controllers\ShopCart\CartController;
 use App\Http\Controllers\User\Order\OrderController;
 use App\Http\Controllers\Category\Product\ProductController;
 use App\Http\Controllers\Category\CharactController;
+use App\Http\Controllers\WelcomeController;
 
 
 /*
@@ -26,9 +27,9 @@ use App\Http\Controllers\Category\CharactController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/',[WelcomeController::class,'index'])->name('welcome');
+
+Route::get('get_categories', [CategoryController::class, 'getById'])->name('getCats');
 
 Auth::routes(['verify' => true]);
 
@@ -50,6 +51,7 @@ Route::group(['prefix' => 'profile','middleware' => ['verified','auth','guest']]
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 Route::group(['prefix' => 'ruler', 'middleware' => ['admin']], function(){
         Route::get('/',[AdminController::class,'index'])->name('adminProfile');
