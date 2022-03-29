@@ -1,0 +1,165 @@
+
+.cont_lg {
+    display:flex;
+    margin: 10px 0 0 0;
+    /* flex-wrap:wrap */
+}
+.cont_lg div p {
+
+    font-size: 15px;
+    font-weight: 500;
+    color: gray;
+    padding:0;
+    text-align: left;
+    margin-bottom: 5px!important;
+}
+#coteg{
+    overflow-y: scroll;
+    width:25%;
+    /* width: 1020px; */
+    height: 640px;
+    margin: 23px 0 0 0;
+    background: #f2f2f2;
+
+}
+#coteg > p{
+    margin-left: 49px;
+    margin-bottom: 5px!important;
+    font-size: 15px;
+    font-weight: 500;
+    color: gray;
+    padding:0
+}
+
+ p:active{
+background-color:white
+ }
+#sub_coteg{
+    width: 1086px;
+    display:flex;
+    flex-wrap: wrap;
+}
+.sub_coteg_new{
+        margin: 0px 0px 6px 30px;
+}
+#sub_coteg > div{
+
+width:33.3%
+}
+.h3{
+    font-size:15px!important;
+    font-weight: 700!important;
+    /* font-weight: bold; */
+    line-height: 1.1;
+    color: rgb(110, 109, 109);
+}
+
+body, html, p {
+	margin:0;
+	padding:0;
+	}
+#grid-container {
+	display: grid;
+	grid-template-columns: 175px 1fr;
+	grid-gap:20px;
+	margin:0 20px;
+	}
+#navigation-container {
+	margin-top:40px;
+	grid-area: 1 / 1 / 2 / 2;
+	}
+#content-container {
+	grid-area: 1 / 2 / 2 / 6;
+	background:#fff;
+	}
+h1 {
+	margin:0;
+	padding:0;
+	font-size:30px;
+	font-weight:bold;
+	line-height:40px;
+	}
+a, a:active, a:focus, a:visited {
+	text-decoration:none;
+	color:#1f77be;
+	}
+ul {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	}
+ul li {
+	margin:0;
+	padding:0;
+	}
+ul li a {
+	display:block;
+	margin-top:-1px;
+	padding:0 10px;
+	height:30px;
+	line-height:30px;
+	border:1px solid #337dc1;
+	background:#fafafa;
+	color:#337dc1;
+	}
+ul li a:hover {
+	background:#e0e0e0;
+	}
+ul li a:focus {
+	border:1px solid #337dc1;
+	}
+ul li a.active {
+	background:#fff;
+	}
+
+textarea {
+	margin:0;
+	width: 100%;
+	height: 250px;
+	border:1px solid #ccc;
+	padding:10px;
+	}
+textarea::placeholder {
+	color:#ccc;
+	}
+
+.top-links {
+	margin:0 25px 0 0;
+	line-height:40px;
+	text-align:right;
+	}
+
+.bottom-links {
+	margin:10px 0 0 217px;
+	}
+.top-links a:not(:last-child), .bottom-links a {
+	margin-right:25px;
+	}
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	word-wrap: normal;
+	}
+
+:focus {
+	border:1px solid #337dc1;
+	color: #124964;
+	box-shadow:
+		0 0 0 1px #5b9dd9,
+		0 0 2px 1px rgba(30, 140, 190, .8) !important;
+	}
+
+.cont{
+    display:flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    height: 660px;
+    width: 75%;
+}
