@@ -42,11 +42,11 @@ class Category extends Model
      }
 
 
-
      public function characts()
      {
-       return $this->belongsToMany(Charact::class,'category_chars','category_id','characteristic_id');
+       return $this->belongsToMany(Charact::class,'category_chars','category_id','characteristic_id')->withTimestamps();
      }
+
 
 
 }

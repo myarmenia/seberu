@@ -28,6 +28,7 @@ class CreateCategoryCharPiv extends Migration
           ->references('id')
           ->on('categories')
           ->onDelete('cascade');
+          $table->timestamps();
         });
     }
 

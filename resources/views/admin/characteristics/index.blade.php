@@ -8,6 +8,7 @@
     <div id="tamanho" class="row">
         <div id="tamanho" class="col-12">
 
+
             <div id="tamanho" class="card">
                 <div id="tamanho" class="card-header">
                     <h3 class="card-title">Characteristics</h3>
@@ -23,6 +24,16 @@
                         </div>
                     @endcan
                 </div>
+                @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session()->get('message') }}
+                    </div>
+                @endif
+                @if(session()->has('message_error'))
+                    <div class="alert alert-danger">
+                        {{ session()->get('message_error') }}
+                    </div>
+                @endif
 
                 <div id="tamanho" class="card-body">
                     <table id="example1 tabelinha" class="table table-bordered table-striped">
@@ -78,7 +89,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add Category</h4>
+                    <h4 class="modal-title">Добавить характеристику</h4>
                 </div>
                 <div class="modal-body">
                     <form action="{{route('adminCreateCharact')}}" method="POST">

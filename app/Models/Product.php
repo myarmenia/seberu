@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','price','sale_price','category_id'];
+    protected $fillable = ['name','price','quantity','sale_price','category_id','description'];
 
 
 //    public function characts(){
@@ -17,14 +17,20 @@ class Product extends Model
 //    }
 
 
-    public function characts(){
-        return $this->hasMany(ProductCharact::class,'product_id')->join('characteristics','product_chars.chars_id','=','characteristics.id');
+    // public function characts(){
+    //     return $this->hasMany(ProductCharact::class,'product_id')->join('characteristics','product_chars.chars_id','=','characteristics.id');
+    // }
+
+    public function product_photos(){
+        return $this->hasMany(ProductPhoto::class);
     }
-
-
-
 
     public function category(){
       return $this->belongsTo(Category::class);
     }
+
+    public  function tags(){
+         return $this->belongsToMany(Tag::class);
+    }
+
 }

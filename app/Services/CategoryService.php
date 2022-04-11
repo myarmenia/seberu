@@ -8,6 +8,18 @@ class CategoryService
   public function getAll($id = null){
     return Category::where('parent_id',$id)->with('child')->get();
   }
+//   getting subcategories
+  public function getChilds($id = null){
+    return Category::where('id',$id)->with('child')->first();
+  }
+//getting categories  characters(model,size)
+  public function getCharacters($id = null){
+    return Category::where('id',$id)->with('characts')->first();
+  }
+//   public function getColor($id = null){
+//     return Category::where('id',$id)->with('characts')->first();
+//   }
+
 
 
   public function getParents($id = null){

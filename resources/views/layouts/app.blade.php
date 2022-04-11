@@ -191,6 +191,7 @@
 
         </div>
         <div id="inpg">Войти</div>
+
         <div id="end"><i>Восстановить пароль</i></div>
       </div>
 
@@ -202,9 +203,11 @@
 </div>
 </div>
 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Large modal</button> -->
+ {{-- -------------------------------------login modal start ----------------------------------------------------------}}
+ {{-- <div class="modal-dialog modal-lg">
 <div class="modal fade show" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true"
   role="dialog">
-  <div class="modal-dialog modal-lg">
+
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="w-100 modal-title h4 text-center" id="exampleModalLabel">Вход</h5>
@@ -235,7 +238,9 @@
 
     </div>
   </div>
-</div>
+
+</div> --}}
+ {{-- --------------------------------------login modal end ------------------------------------------------------------}}
 </div>
 <!-- <modal> -->
     <section>
