@@ -15,6 +15,8 @@ use App\Http\Controllers\Category\Product\ProductController;
 use App\Http\Controllers\Category\CharactController;
 use App\Http\Controllers\Product\ProductController as ProductProductController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\Frontuser\indexController;
+use App\Http\Controllers\ShopCart\SingleProductController;
 
 
 /*
@@ -29,8 +31,10 @@ use App\Http\Controllers\WelcomeController;
 */
 
 Route::get('/',[WelcomeController::class,'index'])->name('welcome');
+Route::get('user_profile',[indexController::class,'index'])->name('user_profile');
 
 Route::get('get_categories', [CategoryController::class, 'getById'])->name('getCats');
+Route::get('/single_product', [SingleProductController::class, 'index'])->name('single_product');
 
 Auth::routes(['verify' => true]);
 
