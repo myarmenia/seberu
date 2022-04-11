@@ -78,6 +78,10 @@
                 <div class="col">
                   <a href="{{route('categories',['id' =>$cat['id']])}}" class="link"><i class="fa-solid fa-angle-down"></i></a>
                 </div>
+                <div class="col">
+
+                     <a href="{{ route('editCategories',$cat->id)}}">edit</a>
+                </div>
                 @can('delete_category')
                 <div class="col">
                   <form class="" action="{{route('deleteCategories')}}" method="post">

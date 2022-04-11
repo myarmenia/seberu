@@ -13,6 +13,7 @@ use App\Http\Controllers\ShopCart\CartController;
 use App\Http\Controllers\User\Order\OrderController;
 use App\Http\Controllers\Category\Product\ProductController;
 use App\Http\Controllers\Category\CharactController;
+use App\Http\Controllers\Product\ProductController as ProductProductController;
 use App\Http\Controllers\WelcomeController;
 
 
@@ -64,6 +65,8 @@ Route::group(['prefix' => 'ruler', 'middleware' => ['admin']], function(){
             Route::delete('/delete',[CategoryController::class,'delete'])->name('deleteCategories')->middleware('permission:delete_category');
             Route::put('/update',[CategoryController::class,'update'])->name('updateCategories')->middleware('permission:edit_category');
             Route::patch('/spam',[CategoryController::class,'spam'])->name('spamCategories')->middleware('permission:edit_category');
+            Route::get('/edit/{id}',[CategoryController::class,'edit'])->name('editCategories')->middleware('permission:edit_category');
+            Route::put('category-characts',[CategoryController::class,'categoryCharacts'])->name('updateCategoriesCharact')->middleware('permission:edit_category');
           });
 
         Route::group(['prefix' => 'all_users'], function(){
@@ -87,9 +90,14 @@ Route::group(['prefix' => 'ruler', 'middleware' => ['admin']], function(){
                   Route::delete('/delete',[PermissionController::class,'delete'])->name('adminDeletePerm');
           });
 
-    Route::group(['prefix' => 'characteristics', 'middleware' => ['permission:roles_and_perms']], function(){
-        Route::get('/',[CharactController::class,'index'])->name('characts');
-        Route::post('/',[CharactController::class,'create'])->name('adminCreateCharact');
+        Route::group(['prefix' => 'characteristics', 'middleware' => ['permission:roles_and_perms']], function(){
+            Route::get('/',[CharactController::class,'index'])->name('characts');
+            Route::post('/',[CharactController::class,'create'])->name('adminCreateCharact');
 
-    });
+        });
+        Route::group(['prefix' => 'add_product','middleware' => ['permission:roles_and_perms']],function(){
+            Route::get('/',[ProductProductController::class,'index'])->name('retunAddProductForm');
+            Route::post('/adminGetSubcategory',[ProductProductController::class,'getSubcategory'])->name('adminGetSubcategory');
+            Route::post('/adminAddProduct',[ProductProductController::class,'store'])->name('adminAddProduct');
+        });
   });

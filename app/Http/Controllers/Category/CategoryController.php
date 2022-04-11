@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Charact;
 use Illuminate\Support\Facades\Validator;
 use App\Services\SlugifyService;
 use App\Services\CategoryService;
@@ -17,7 +18,9 @@ class CategoryController extends Controller
   public function __construct(){
     $this->categoryServ = new CategoryService;
   }
+
   public function index(Request $request){
+
     $validated = $request->validate([
         'id' => 'integer|nullable',
     ]);
@@ -50,6 +53,7 @@ class CategoryController extends Controller
   }
 
   public function update(Request $request){
+
     $validator = Validator::make($request->all(), [
       'name' => 'required|max:100',
       'id' => 'required|integer'
@@ -63,6 +67,17 @@ class CategoryController extends Controller
     return response()->json([
         'status' => 'sucsess'
       ]);
+
+
+    $validator = Validator::make($request->all(), [
+          'name' => 'required|max:100',
+          'id' => 'required|integer',
+          'mycharacts'=>'required|max:100',
+         ]);
+         if($validator->fails()){
+                return response()->json($validator->errors(), 400);
+            }
+         $this->categoryServ->update($request['id'],$request->all());
   }
 
   public function spam(Request $request){
@@ -85,5 +100,30 @@ class CategoryController extends Controller
 
 
   }
+  public function  edit($id){
+
+    $categories = Category::where('id',$id)->first();
+    $characters = Charact::all();
+
+    $char_array=[];
+    foreach($categories->characts as $item){
+            array_push($char_array,$item->id);
+    }
+
+
+    return view('admin.categories.edit',compact('categories','characters','char_array'));
+
+  }
+
+  public function categoryCharacts(Request $request){
+
+    $category =Category::find($request->id);
+
+    $category->characts()->sync($request->mycharacts);
+
+    return redirect()->back()->with("message","Категория обновлена");
+
+  }
+
 
 }
