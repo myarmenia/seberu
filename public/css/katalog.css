@@ -4,6 +4,14 @@
     margin: 10px 0 0 0;
     /* flex-wrap:wrap */
 }
+.btn1{
+    height: 51px;
+    width: 136px !important;
+    border-radius: 6px;
+    background-image: linear-gradient(to right, rgb(107 24 243), rgb(197 85 217));
+    color: white;
+    font-size: 21px;
+}
 .cont_lg div p {
 
     font-size: 15px;

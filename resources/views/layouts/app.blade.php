@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
   <link rel="stylesheet" href="{{asset('css/reg_mod.css')}}">
   <link rel="stylesheet" href="{{asset('css/katalog.css')}}">
+  
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
   integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
   crossorigin="anonymous"></script>
@@ -41,7 +42,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-
+<link rel="stylesheet" href="{{asset('/css/singleproduct.css')}}">
 
  @yield('style')
 </head>
@@ -55,7 +56,6 @@
       </div>
       <div class="filter-div">
         <div class="kat">
-
           <button type="button" class="btn1"  autocomplete="off">
             <div id="icn">
             <i class="material-icons" id="icons"
@@ -123,47 +123,14 @@
                 </p>
             @endforeach
         </div>
-
-
             <div class="cont"></div>
-      </div>
-
+        </div>
   </div>
-
-
 
   </header>
   <section class="w-100">
     @yield('content')
   </section>
-
-  <footer>
-    <div id="parent1">
-      <div class="n1">
-        <span class="sp"><dark>Покупателям</dark></span><br >
-        <span>Обратная связь</span><br >
-        <span>О себе</span><br >
-        <span>Возвраты</span>
-      </div>
-      <div  class="n2">
-        <span class="sp"><dark>Сотрудничество</dark></span><br >
-        <span>Личный Кабинет магазина</span><br >
-        <span>Подключение магазина</span><br >
-        <span>Производителям</span><br >
-        <span>Партнерская программа</span><br >
-        <span>Новости компании</span>
-      </div>
-      <div class="n1">
-        <span class="sp">Помощь</span><br >
-        <span>Как сделать заказ</span><br >
-        <span>Доставка</span><br >
-        <span>Оплата</span><br >
-        <span>Контакты</span><br >
-        <span>Безопасность</span>
-      </div>
-    </div>
-    <section id="sect"><span id="pp1">2021</span></section>
-  </footer>
 
   <!-- Modal -->
   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -237,6 +204,7 @@
   </div>
 </div>
 </div>
+
 <!-- <modal> -->
     <section>
         <div class="all_modals">
