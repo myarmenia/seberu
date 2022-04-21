@@ -184,4 +184,6 @@
       <h3>Выбери свой ноутбук</h3>
     </div>
   </div>
+  @include('footer-page.footer')
 @endsection
+

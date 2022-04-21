@@ -13,7 +13,7 @@ class AddProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,11 +24,25 @@ class AddProductRequest extends FormRequest
     public function rules()
     {
         return [
-            "category_id" => 'required',
-                   "name" => 'required|max:100',
-                  "price" => 'required|integer',
-            //      "sale_price" => $request->selling_price,
-            "description" => 'required|min:20',
+            "category" => 'required',
+                 "subcategory" => 'required',
+                 "productname" => 'required|max:100',
+                    "quantity" => 'required',
+                     "comment" => 'required',
+               "product_price" => 'required|integer',
+                //     "img_path" => 'required',
+                //   "img_path.*" => 'mimes:jpg,png,jpeg,gif,svg',
+                  "characters.*.value" => 'required|nullable',
         ];
+
+    }
+    public function messages()
+    {
+        return [
+
+            "characters.*.value.required" => 'The field is required',
+
+        ];
+
     }
 }
