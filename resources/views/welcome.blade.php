@@ -5,20 +5,7 @@
 @endsection
 
 @section('content')
-<div class="container hed">
-    <div class="scroll">
-      <div>Краснадар</div>
-      <div>Бренды</div>
-      <div>Косметика</div>
-      <div>Автотовары</div>
-      <div>Детям</div>
-      <div>Красота и здоровья</div>
-      <div>Товары для дома</div>
-      <div>Подарки и праздник</div>
-      <div>Еще...</div>
-    </div>
-  </div>
-  <hr/>
+
   <section >
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" >
       <div class="carousel-indicators">

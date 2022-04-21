@@ -31,15 +31,20 @@ use App\Http\Controllers\ShopCart\SingleProductController;
 */
 
 Route::get('/',[WelcomeController::class,'index'])->name('welcome');
-Route::get('user_profile',[indexController::class,'index'])->name('user_profile');
+
 
 Route::get('get_categories', [CategoryController::class, 'getById'])->name('getCats');
 Route::get('/single_product', [SingleProductController::class, 'index'])->name('single_product');
 
 Auth::routes(['verify' => true]);
 
-Route::group(['prefix' => 'profile','middleware' => ['verified','auth','guest']], function(){
+Route::group(['prefix' => 'profile','middleware' => ['verified','auth']], function(){
     Route::get('/',[ProfileController::class,'index'])->name('profile');
+    Route::get('edit_show',[ProfileController::class,'edit_show'])->name('edit_show');
+    Route::post('store/{id}',[ProfileController::class,'store'])->name('store');
+    Route::get('update_pass',[ProfileController::class,'update'])->name('update_pass');
+    Route::get('myorganization',[ProfileController::class,'my_organization_show'])->name('myorganization');
+    Route::post('update/{id}',[ProfileController::class,'my_organization_update'])->name('update');
   });
 
   Route::group(['prefix' => 'cart','middleware' => ['guest']], function(){

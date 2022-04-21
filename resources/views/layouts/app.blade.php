@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
   <link rel="stylesheet" href="{{asset('css/reg_mod.css')}}">
   <link rel="stylesheet" href="{{asset('css/katalog.css')}}">
-  
+
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
   integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
   crossorigin="anonymous"></script>
@@ -43,6 +43,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{{asset('/css/singleproduct.css')}}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
  @yield('style')
 </head>
@@ -52,7 +53,7 @@
     <div id="cont" class="container d-flex">
 
       <div class="logo">
-        <img id="logo" src="{{asset('storage/main-images/logo.png')}}">
+        <a href="{{route('welcome')}}"><img id="logo" src="{{asset('storage/main-images/logo.png')}}"></a>
       </div>
       <div class="filter-div">
         <div class="kat">
@@ -88,12 +89,22 @@
           <div class="icns"><i class="fa fa-shopping-basket" style="font-size: 25px;color: grey;margin-top: 3px;"></i><br />Корзина</div>
           <div class="icns">
             @if(Auth::check())
-              <form class="" action="{{route('logout')}}" method="post">
+            <a href="{{route('profile')}}">
                 @csrf
-                  <input type="submit" name="" value="Logout">
-              </form>
+               <button class="btn btn-light" style="height:53px; width: 77px; background-color:#fff; outline: unset;">
+                <img src="{{asset('storage/main-images/gotologin.png')}}" style="height:20px"><br />
+                Профиль
+               </button>
+            </a>
+            <form class="" action="{{route('logout')}}" method="post">
+                @csrf
+               <button class="btn btn-light" style="height:53px; width: 77px; background-color:#fff; outline: unset;">
+                <img src="{{asset('storage/main-images/images.png')}}" style="height:20px"><br />
+                   logout
+               </button>
+           </form>
             @else
-            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal" style="height: 48px; width: 77px;">
+            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal" style="height: 48px; width: 77px;background-color:#fff; outline: unset;">
             <img src="{{asset('storage/main-images/user.png')}}" style="height:20px"><br />
             Вход
             </button>
@@ -102,7 +113,7 @@
         </div>
       </div>
     </div>
-    <div class="cat_icon"><i class="fa fa-bars" style="font-size:36px"></i></div>
+    {{-- <div class="cat_icon"><i class="fa fa-bars" style="font-size:36px"></i></div> --}}
   </section>
 
   <section>
@@ -114,7 +125,20 @@
       <div>Отдахни в СЕБЕ!</div>
     </div>
   </section>
-
+  <div class="container hed">
+    <div class="scroll">
+      <div>Краснадар</div>
+      <div>Бренды</div>
+      <div>Косметика</div>
+      <div>Автотовары</div>
+      <div>Детям</div>
+      <div>Красота и здоровья</div>
+      <div>Товары для дома</div>
+      <div>Подарки и праздник</div>
+      <div>Еще...</div>
+    </div>
+</div>
+<hr/>
   <div class="cont_lg">
         <div id="coteg">
             @foreach ($categoris as $item)
@@ -169,6 +193,7 @@
 
 </div>
 </div>
+
 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Large modal</button> -->
  {{-- -------------------------------------login modal start ----------------------------------------------------------}}
  {{-- <div class="modal-dialog modal-lg">
@@ -219,7 +244,6 @@
                 <div class="modal-header">
                   <form method="POST" action="{{ route('login') }}">
                     @csrf
-
                   <h5 class="w-100 modal-title h4 text-center" id="exampleModalLabel">Вход</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -378,6 +402,22 @@
         </div>
       </section>
    {{-- modelEnd --}}
+   <div class="bottom_menu">
+    <div class="my_menu">
+      <i class="material-icons" id="ic"
+            style="font-size:40px; position: relative; left: 1px">clear</i>
+      <img src="{{asset('/storage/main-images/points.png')}}" class="menu1_img1">Каталог
+    </div>
+    <div class="my_menu"><i class="fa fa-search" style="font-size:32px; margin-top:5px;color:grey"></i>Поиск</div>
+    <div class="my_menu">
+      <img src="{{asset('/storage/main-images/orders.png')}}" class="menu_img1" style="width: 27px; margin-left: 0;margin-top: 5px;">Заказы
+    </div>
+    <div class="my_menu">
+     <i class="fa fa-shopping-basket" style="    font-size: 27px;margin-top: 6px;color: grey;"></i>Корзина</div>
+    <div class="my_menu" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <img src="{{asset('/storage/main-images/user.png')}}" style="font-size:27px; margin-top:4px;" class="menu_img2">Вход
+    </div>
+ </div>
 
   <script src="{{asset('js/main.js')}}"></script>
   <script src="{{asset('js/reg_mod.js')}}"></script>
@@ -451,7 +491,6 @@ tabItems.forEach(checkoutTabs)
                     $('.cont').append(`<div class="sub_coteg p`+p+`"><h3 class="h3">${item.name}</h3></div>`);
 
                        for(const item1 of item.child){
-
                             $('.p'+p).append(`<p>${item1.name}</p>`);
                         }
 
@@ -461,6 +500,7 @@ tabItems.forEach(checkoutTabs)
 
            })
        }
+
 
   </script>
   @yield('script')

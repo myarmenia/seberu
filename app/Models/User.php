@@ -34,6 +34,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'fio',
         'correspondent_account',
         'phone',
+        'image',
+        'company_image'
 
     ];
 

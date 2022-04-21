@@ -156,13 +156,13 @@ textarea::placeholder {
 	word-wrap: normal;
 	}
 
-:focus {
+/* :focus {
 	border:1px solid #337dc1;
 	color: #124964;
 	box-shadow:
 		0 0 0 1px #5b9dd9,
 		0 0 2px 1px rgba(30, 140, 190, .8) !important;
-	}
+	} */
 
 .cont{
     display:flex;
@@ -170,4 +170,41 @@ textarea::placeholder {
     overflow-y: scroll;
     height: 660px;
     width: 75%;
+}
+@media screen and (min-device-width:375px) and (max-device-width: 768px) {
+    #coteg{
+        overflow-y: scroll;
+        width:25%;
+        width: 100%;
+        height: 640px;
+        margin: 23px 0 0 0;
+        background: #f2f2f2;
+
+    }
+    #coteg > p{
+        margin-left: 15px;
+        margin-bottom: 5px!important;
+        font-size: 15px;
+        font-weight: 500;
+        color: gray;
+        padding: 0;
+    }
+    .cont{
+        display: flex;
+        flex-wrap: wrap;
+        overflow-y: scroll;
+        height: 660px;
+        width: unset;
+    }
+    .cont_lg{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .sub_coteg{
+        width: calc(99% / 2);
+        padding: 24px;
+    }
+    .cont_lg div p{
+        font-size: 12px !important;
+    }
 }
