@@ -1,28 +1,12 @@
-// var ss=document.getElementById("r1")
-// ss.addEventListener("click", block())
 
-// $("#r1").click(function (){
-//     $("#toggle").toggle()
-// })
-// $("#r2").click(function (){
-//     $("#toggle1").toggle()
-// })
-// $("#r2").click(function (){
-//     // var dd=$("r2").attr("id")
-//     // $('. + (dd)').
-//     $(".toggle").not(this).cs
-// })
-// function block(){
-//     if()
-// }
 $('.toggle').hide()
 $('input[type=radio]').on('change', function(){
     $('.toggle').hide()
     let c=$(this).attr('data-name')
-    let cl = $(".addRegForm")
+    let cl = $(".addRegForm").css("background-color", "yellow");
     if(c == 'ip'){
       cl.empty()
-      cl.append(`<div class="input-group mb-3">
+      cl.append(`<div class="input-group over mb-3">
                           <input type="text" class=" psw form-control" placeholder="ФИО индивидуального предпринимателя"
                             aria-label="Recipient's username" aria-describedby="basic-addon2" name="fio">
                         </div>
@@ -38,10 +22,10 @@ $('input[type=radio]').on('change', function(){
                           <input type="text" class=" psw form-control" placeholder="Почтовый адрес(полный адрес)* "
                             aria-label="Recipient's username" aria-describedby="basic-addon2" name="post_address">
                         </div>
-                        <!-- <div class="input-group mb-3">
+                        <div class="input-group mb-3">
                           <input type="text" class=" psw form-control" placeholder="Телефон" aria-label="Recipient's username"
                             aria-describedby="basic-addon2" >
-                        </div> -->
+                        </div>
                         <div class="input-group mb-3">
                           <input type="text" class=" psw form-control" placeholder="Хаименование банка*"
                             aria-label="Recipient's username" aria-describedby="basic-addon2" name="bank_name">
@@ -102,5 +86,5 @@ $('input[type=radio]').on('change', function(){
                       </div>
                     </div>`)
     }
-    //$('.'+c).show()
+    // $('.'+c).show()
 })
