@@ -25,6 +25,9 @@ class ProfileController extends Controller
         $request->validate([
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
         ]);
+
+
+        
         $user = User::find($id);
         $user->update([
             'name'=>$request->name,
