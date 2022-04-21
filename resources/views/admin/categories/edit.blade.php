@@ -64,7 +64,6 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="submit" class="btn btn-primary">Сохранитъ</button>
-
                                 </div>
                             </form>
                         </div>
@@ -86,7 +85,7 @@
 
         @section('script')
              {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
-            
+
 
         @endsection
 

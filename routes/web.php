@@ -17,6 +17,7 @@ use App\Http\Controllers\Product\ProductController as ProductProductController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Frontuser\indexController;
 use App\Http\Controllers\ShopCart\SingleProductController;
+use App\Http\Controllers\FileController;
 
 
 /*
@@ -102,6 +103,17 @@ Route::group(['prefix' => 'ruler', 'middleware' => ['admin']], function(){
         Route::group(['prefix' => 'add_product','middleware' => ['permission:roles_and_perms']],function(){
             Route::get('/',[ProductProductController::class,'index'])->name('retunAddProductForm');
             Route::post('/adminGetSubcategory',[ProductProductController::class,'getSubcategory'])->name('adminGetSubcategory');
+            Route::post('/adminGetSubcategoryChild',[ProductProductController::class,'getSubcategoryChild'])->name('adminGetSubcategoryChild');
             Route::post('/adminAddProduct',[ProductProductController::class,'store'])->name('adminAddProduct');
         });
+        Route::group(['prefix'=>'all_product','middleware'=>['permission:roles_and_perms']],function(){
+            Route::get('/',[ProductProductController::class,'allProduct'])->name('adminAllProduct');
+            Route::get('/edit/{id}',[ProductProductController::class,'edit'])->name('adminEditProduct');
+            Route::post('/deletephoto',[ProductProductController::class,'deletePhoto'])->name('adminEditDeletePhoto');
+            Route::post('/update-product/{id}',[ProductProductController::class,'update'])->name('adminUpdateProduct');
+
+            Route::delete('/delete',[ProductProductController::class,'destroy'])->name('adminDeleteProduct');
+        });
+        Route::get('get_file',[FileController::class,'getFile'])->name('getFile');
+
   });
