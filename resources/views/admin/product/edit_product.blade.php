@@ -36,14 +36,13 @@
 
                   <select class="form-select"  id="subcategory"  name="subcategory" aria-label="Default select example">
 
-                       @foreach ( $category->parent->child as $items )
+                    @foreach ($category->parent->child as $items )
                         @if ($items->id==$category->id)
                             <option  value="{{$items->id}}" selected >{{$items->name}}</option>
                         @else
                             <option  value="{{$items->id}}"  >{{$items->name}}</option>
                         @endif
-                            <option  value="{{$items->id}}" >{{$items->name}}</option>
-                      @endforeach
+                    @endforeach
 
                   </select>
                   <input type="hidden"  class="form-control" name="category" value="{{$category->id}}">
@@ -66,9 +65,9 @@
               </div>
             </div>
 
-
             <div class="form-row" id="characters">
-                @foreach ($category_characts->characts as  $item)
+                @foreach ($category->characts as  $item)
+
                  @if($item->name=='Цвет')
                                 <div class='card-body'>
                                     <label for='productsize'>{{$item->name}}</label>
@@ -84,16 +83,17 @@
                                     </div>
                                     <input type='hidden' name='color' value=''>
                                     <span class='invalid-feedback  object' role='alert' data-name='color'></span>
-                                    {{-- <span class='invalid-feedback colorpiker d-none' role='alert' data-name ='{{$item->name}}'></span> --}}
+
                                 </div>
                  @else
 
                     <div class='form-group col-12'>
+                        
                         <label for='productsize'> {{$item->name}}</label>
                         @foreach ($product['product_chars'] as $key )
                              @if ($key->pivot->chars_id == $item->id)
                                 <input type='text' class='form-control characterpicker' id = '"+element.id+"'  data-attribute ='{{$item->name}}'  value='{{$key->pivot->value}}'   name='characters[{{$item->id}}][value]'>
-                                {{-- <span class='invalid-feedback' role='alert' data-name ='{{$item->name}}'> --}}
+
                                 <span class='invalid-feedback object' role='alert' data-name ='characters.{{$item->id}}.value'></span>
                             @endif
                         @endforeach
@@ -197,7 +197,7 @@ $('#update_product').on('submit',function(e){
                 $(".object").html('');
                         var errors = data.responseJSON.errors;
                         $.each(errors, function (index, value) {
-                            console.log("hello")
+                            console.log(index)
                             if (value.length != 0 )
                             {
                                 $('.invalid-feedback').css('display','block')

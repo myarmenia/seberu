@@ -121,7 +121,7 @@
     $('#category').on('change',function(){
             let category_id = $('#category').val();
             $("#subcategory").html('')
-            $('#characters').html('')
+            // $('#characters').html('')
             $('#subcatecorydirection').html('')
             $('#subcatecorydirectionchild').html('')
             $.ajaxSetup({
@@ -138,7 +138,7 @@
                     success: function(result){
                         // console.log(result)
                         let arr = JSON.parse(result)
-
+                            console.log(arr)
                          arr.forEach(element => {
 
                                 if(element.child){
@@ -168,8 +168,9 @@
             })
 
             $('#subcategory').on('change',function(){
-            let category_id = $('#subcategory').val();
 
+            let category_id = $('#subcategory').val();
+            alert(category_id)
             $("#subcatecorydirection").html('')
 
             $.ajaxSetup({
@@ -185,12 +186,33 @@
                     success: function(result){
 
                          let arr = JSON.parse(result)
+                        //  console.log(arr)
 
                          $('#subcatecorydirection').html("<div class='form-row'><div class='form-group col-12'><select class ='form-select selectchild' name='selectchild'></select></div></div>")
                         // console.log(arr.child.length)
-                         arr.child.forEach(element => {
+                         arr.forEach(element => {
 
-                             $('.selectchild').append("<option value='"+element.id+"'>"+element.name+"</option>");
+                            if(element.child){
+
+                                    element.child.forEach(element=>{
+                                        $(".selectchild").append("<option value='"+element.id+"' name='"+element.name+"'>"+element.name+"</option>")
+                                    })
+                            }
+
+                                element.characts.forEach(element=>{
+                                    if(element.name=="Цвет"){
+
+                                            $('#characters').append("<div class='card-body'><label for='productsize'>"+element.name+"</label><div class='color' style='height:150px;border: 1px solid #ced4da;background-color: #f8fafc; overflow-y:scroll'></div> <span class='invalid-feedback  object' role='alert' data-name='color'></span><input type='hidden' name='color' value=''></div>")
+                                            for(i=0;i<arr[2].length;i++){
+                                                $('.color').append("<div class='d-flex align-items-center my-1'><input type='checkbox' value='"+arr[2][i].name+"' class='all_colors mx-2' name='character_colors["+element.id+"][][value]'><div style='height:30px;width:30px;background:"+arr[2][i].name+"'></div></div>")
+                                            }
+                                    }else{
+                                        $('#characters').append("<div class='form-group col-12'><label for='productsize'>"+element.name+"</label><input type='text' class='form-control characterpicker' id = '"+element.id+"' placeholder='"+element.name+" товара' data-attribute ='"+element.id+"' name='characters["+element.id+"][value]'>"
+                                            +"<span class='invalid-feedback object' role='alert' data-name ='characters."+element.id+".value'></span></div>");
+                                            }
+                                })
+
+                            //  $('.selectchild').append("<option value='"+element.id+"'>"+element.name+"</option>");
 
                         });
 
@@ -217,16 +239,42 @@
                     success: function(result){
                         // console.log(result)
                          let arr = JSON.parse(result)
-                     console.log(arr.child.length)
-                     if(arr.child.length!=0){
-                            $('#subcatecorydirectionchild').html("<select class ='form-select selectchild' name='selectchild'><option disabled>Выберите подкатегорию</option></select>")
-                         console.log(arr.child)
-                            arr.child.forEach(element => {
+                    //  console.log(arr)
+                    //  if(arr.child.length!=0){
+                    //         $('#subcatecorydirectionchild').html("<select class ='form-select selectchild' name='selectchild'><option disabled>Выберите подкатегорию</option></select>")
+                    //      console.log(arr.child)
+                    //         arr.child.forEach(element => {
 
-                                $('.selectchild').append("<option value='"+element.id+"'>"+element.name+"</option>");
+                    //             $('.selectchild').append("<option value='"+element.id+"'>"+element.name+"</option>");
 
-                            });
-                        }
+                    //         });
+                    //     }
+                    arr.forEach(element => {
+                            if(element.child){
+
+                                    element.child.forEach(element=>{
+                                        $(".selectchild").append("<option value='"+element.id+"' name='"+element.name+"'>"+element.name+"</option>")
+                                    })
+                            }
+                                if(element.characts){
+                                element.characts.forEach(element=>{
+                                    console.log(element.name)
+                                    if(element.name=="Цвет"){
+
+                                            $('#characters').append("<div class='card-body'><label for='productsize'>"+element.name+"</label><div class='color' style='height:150px;border: 1px solid #ced4da;background-color: #f8fafc; overflow-y:scroll'></div> <span class='invalid-feedback  object' role='alert' data-name='color'></span><input type='hidden' name='color' value=''></div>")
+                                            for(i=0;i<arr[2].length;i++){
+                                                $('.color').append("<div class='d-flex align-items-center my-1'><input type='checkbox' value='"+arr[2][i].name+"' class='all_colors mx-2' name='character_colors["+element.id+"][][value]'><div style='height:30px;width:30px;background:"+arr[2][i].name+"'></div></div>")
+                                            }
+                                    }else{
+                                        $('#characters').append("<div class='form-group col-12'><label for='productsize'>"+element.name+"</label><input type='text' class='form-control characterpicker' id = '"+element.id+"' placeholder='"+element.name+" товара' data-attribute ='"+element.id+"' name='characters["+element.id+"][value]'>"
+                                            +"<span class='invalid-feedback object' role='alert' data-name ='characters."+element.id+".value'></span></div>");
+                                            }
+                                })
+                                }
+                            //  $('.selectchild').append("<option value='"+element.id+"'>"+element.name+"</option>");
+
+                        });
+
 
                     }
 

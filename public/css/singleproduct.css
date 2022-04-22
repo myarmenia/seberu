@@ -214,10 +214,9 @@ h5{
 #colors{
     height: 9vh;
     width: 13vw;
-    /* border: 1px solid; */
     display: flex;
-    margin-left: 1vw;
-    justify-content: space-between;
+    align-items: center;
+    justify-content:space-around;
 }
 
 #colors > div{
@@ -225,16 +224,7 @@ h5{
     width: 3vw;
     border: 1px solid;
 }
-#black{
-    background-color: black;
-}
 
-#white{
-    background-color: white
-}
-#red{
-    background-color: red;
-}
 #col{
     font-weight: 500;
     font-size:1.5vw!important;

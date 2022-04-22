@@ -14,6 +14,7 @@ class CategoryService
   }
 //getting categories  characters(model,size)
   public function getCharacters($id = null){
+
     return Category::where('id',$id)->with('characts')->first();
   }
 //   public function getColor($id = null){

@@ -35,7 +35,8 @@ Route::get('/',[WelcomeController::class,'index'])->name('welcome');
 
 
 Route::get('get_categories', [CategoryController::class, 'getById'])->name('getCats');
-Route::get('/single_product', [SingleProductController::class, 'index'])->name('single_product');
+Route::get('/single_product/{id}', [SingleProductController::class, 'index'])->name('single_product');
+
 
 Auth::routes(['verify' => true]);
 

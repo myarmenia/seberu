@@ -36,24 +36,31 @@ class ProductController extends Controller
     }
 
     public function getSubcategory(Request $request){
-        $ss=Category::with('child')->with('children')->where('id',$request->category_id)->get();
+
+        // $ss=Category::with('child')->with('children')->where('id',$request->category_id)->get();
 
 
         $categories_characters = $this->categoryServ->getCharacters($request->category_id);
 
         $categories_subcategory = $this->categoryServ->getChilds($request->category_id);
-
+// dd($categories_subcategory);
         $color=Color::all();
 
-        $category_array=[$categories_characters, $categories_subcategory,$color];
+        // $category_array=[$categories_characters, $categories_subcategory,$color];
 
+        $category_array=[$categories_subcategory];
         echo json_encode($category_array,true);
     }
     public function getSubcategoryChild(Request $request){
-        $category_id=Category::where('id',$request->category_id)->with('child')->first();
 
-
-        echo $category_id;
+        // $category_id=Category::where('id',$request->category_id)->with('child')->first();
+        $categories_subcategory = $this->categoryServ->getChilds($request->category_id);
+        $color=Color::all();
+        $categories_characters = $this->categoryServ->getCharacters($request->category_id);
+        // dd($categories_characters->characts);
+        $category_array=[$categories_subcategory,$categories_characters,$color];
+        echo json_encode($category_array,true);
+        // echo $category_id;
     }
 
     public function allProduct(){
@@ -176,13 +183,10 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product=Product::with('product_chars')->find($id);
-
-
         $category=Category::where('id',$product->category_id)->first();
 
+        $category_characts = Category::where('id',$id)->with('parents')->get();
 
-        $category_characts=Category::find($category->parent->id);
-        // dd($category_characts->characts);
         $color=Color::all();
         $color_char=[];
         foreach($product['product_chars'] as $key){
@@ -191,8 +195,8 @@ class ProductController extends Controller
              }
         }
 
-
-        return view('admin.product.edit_product',compact('product','category','category_characts','color','color_char'));
+        return view('admin.product.edit_product',compact('product','category','color','color_char'));
+        // return view('admin.product.edit_product',compact('product','category','category_characts','color','color_char'));
     }
     public function deletePhoto(Request $request){
 
@@ -254,7 +258,7 @@ class ProductController extends Controller
 
         if(count( $product_photo)==0){
             $validated['img_path']='required';
-            // $validated['img_path']='required|mimes:jpg,png,jpeg,gif,svg';
+            // $validated['img_path']='required|mimes:jpg,png,jpeg,gif,svg,JPG,PNG,JPEG,GIF,SVG';
         }
 
 
@@ -310,7 +314,7 @@ class ProductController extends Controller
                 }
             }
         }
-        dd($request->characters);
+        // dd($product->characters);
             foreach($request->characters as $key=>$item){
                 $product->product_chars()->attach([$key=>$item]);
             }
