@@ -6,10 +6,14 @@ $(".cont_lg").show()
 $("#icons").show()
 })
 $("#icons").on("click", function (){
-    $("#menu_img").show()
+    $("#menu_img").show("fast")
     $("#icons").hide()
     $(".cont_lg").hide()
 })
+
+$(".myclick").click(function(){
+    $('.click_m:first-child').click();
+  });
 
 $("#ic").hide()
 $(".cont_lg").hide()
@@ -25,3 +29,22 @@ $("#ic").on("click", function (){
     $("#ic").hide()
     $(".cont_lg").hide()
 })
+var modal = document.getElementById("myModal");
+
+var btn = document.getElementById("myBtn");
+
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}

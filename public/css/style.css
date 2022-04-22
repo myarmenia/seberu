@@ -116,9 +116,9 @@ span{
     bottom: 0;
     height: 70px;
     border-top: 2px solid #8080803d;
-    width: 90%;
+    width: 100%;
     display: flex;
-    margin-left: 30px;
+    /* margin-left: 30px; */
     background: white;
     justify-content: space-between;
 }
@@ -1131,7 +1131,7 @@ footer{
         height: 100px;
     }
  #logo{
-    width: 8vw;
+    width: 77px;
  }
  .filter-div {
     display: flex;
@@ -1211,7 +1211,7 @@ footer{
     font-size: 1.3vw;
 }
 .hed{
-    max-width: 1400px!important;
+    max-width: 1400px;
 }
 .hed div{
     margin-right:17px;
@@ -1333,10 +1333,12 @@ footer{
 
 
 }
+.n_active::first-line{
+    font-weight:bold!important;
+    color: black!important;
+}
 
-/* .new_flex{
-    overflow-y:scroll;
-    height: 944px;
-    width: 100%;
+/* .click_m:active{
+color:red
 } */
 

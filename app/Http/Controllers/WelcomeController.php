@@ -9,8 +9,10 @@ class WelcomeController extends Controller
 {
     public function index(){
 
-        $cat= Category::where('parent_id',NULL)->get();
-        return view('welcome',["categoris" => $cat]);
+        // $cat= Category::where('parent_id',NULL)->get();
+        // return view('welcome',["categoris" => $cat]);
+        return view('welcome');
+
     }
 
 

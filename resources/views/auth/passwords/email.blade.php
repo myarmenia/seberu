@@ -1,15 +1,6 @@
-@extends('layouts.app')
-
-@section('title')
-    Confirm Email
-@endsection
-@section('style')
-<link rel="stylesheet" href=" {{mix ('css/app.css')}}">
-@endsection
-
+{{-- @extends('layouts.app') --}}
+@include('layouts.app')
 @section('content')
-<div class="card">
-  <div class="card-body">
     <form action="{{ route('password.email') }}" method="post">
             @csrf
 
@@ -39,4 +30,6 @@
         </form>
   </div>
 </div>
-@endsection
+
+@include('footer-page.footer')
+{{-- @endsection --}}
