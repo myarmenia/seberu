@@ -26,7 +26,9 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.js"
   integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
   integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -48,7 +50,50 @@
  @yield('style')
 </head>
 <body>
+    <style>
+        .active{
+            font-weight:bold!important;
+            color: black!important;
+        }
+        .modal-content2{
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 721.27px;
+        height: 360px;
+        border-radius: 20px;
+        }
+        .form_input{
+            width: 298px;
+            height: 39px;
+        }
+       .offset-md-4 {
+        margin-left: 26.333333%;
+       }
+       .new_input {
+        width: 315px;
+        height: 39px;
+        }
+        .add-button {
+        background: linear-gradient(90deg, #5A64E0 0%, #BC21D8 106.25%);
+        border-radius: 5px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 24px;
+        color: #FFFFFF;
+        width: 194.11px;
+        height: 58px;
+        left: 251px;
+        top: 928px;
+        margin: 20px 0 0 0;
+        }
+        .offset-md-4 {
+         margin-left: 22.333333%;
+       }
+    </style>
   <header>
+
     <section class="w-100">
     <div id="cont" class="container d-flex">
 
@@ -59,9 +104,8 @@
         <div class="kat">
           <button type="button" class="btn1"  autocomplete="off">
             <div id="icn">
-            <i class="material-icons" id="icons"
-            style="font-size:40px; position: relative; left: 1px">clear</i>
-            <img src="{{asset('storage/main-images/Group 1 (1).png')}}" id="menu_img"></div>
+            <i class="material-icons"  id="icons" style="font-size:40px; position: relative; left: 1px">clear</i>
+            <img src="{{asset('storage/main-images/Group 1 (1).png')}}" id="menu_img" class="myclick"></div>
             <div class="catalog">Каталог</div></button>
         </div>
 
@@ -89,27 +133,30 @@
           <div class="icns"><i class="fa fa-shopping-basket" style="font-size: 25px;color: grey;margin-top: 3px;"></i><br />Корзина</div>
           <div class="icns">
             @if(Auth::check())
-            <a href="{{route('profile')}}">
-                @csrf
-               <button class="btn btn-light" style="height:53px; width: 77px; background-color:#fff; outline: unset;">
-                <img src="{{asset('storage/main-images/gotologin.png')}}" style="height:20px"><br />
-                Профиль
-               </button>
-            </a>
-            <form class="" action="{{route('logout')}}" method="post">
-                @csrf
-               <button class="btn btn-light" style="height:53px; width: 77px; background-color:#fff; outline: unset;">
-                <img src="{{asset('storage/main-images/images.png')}}" style="height:20px"><br />
-                   logout
-               </button>
-           </form>
+                <a href="{{route('profile')}}">
+                    @csrf
+                <button class="btn btn-light" style="height:53px; width: 77px; background-color:#fff; outline: unset;">
+                    <img src="{{asset('storage/main-images/gotologin.png')}}" style="height:20px"><br />
+                    Профиль
+                </button>
+                </a>
+            </div>
+            <div class="icns">
+                <form class="" action="{{route('logout')}}" method="post">
+                    @csrf
+                   <button class="btn btn-light" style="height:53px; width: 77px; background-color:#fff; outline: unset;">
+                    <img src="{{asset('storage/main-images/images.png')}}" style="height:20px"><br />
+                       logout
+                   </button>
+               </form>
+            </div>
             @else
-            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal" style="height: 48px; width: 77px;background-color:#fff; outline: unset;">
-            <img src="{{asset('storage/main-images/user.png')}}" style="height:20px"><br />
-            Вход
-            </button>
+                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal" style="height: 48px; width: 77px;background-color:#fff; outline: unset;">
+                <img src="{{asset('storage/main-images/user.png')}}" style="height:20px"><br />
+                Вход
+                </button>
             @endif
-        </div>
+
         </div>
       </div>
     </div>
@@ -125,29 +172,27 @@
       <div>Отдахни в СЕБЕ!</div>
     </div>
   </section>
-  <div class="container hed">
-    <div class="scroll">
-      <div>Краснадар</div>
-      <div>Бренды</div>
-      <div>Косметика</div>
-      <div>Автотовары</div>
-      <div>Детям</div>
-      <div>Красота и здоровья</div>
-      <div>Товары для дома</div>
-      <div>Подарки и праздник</div>
-      <div>Еще...</div>
-    </div>
+  <div class="new">
+      <div class="new-text">Краснадар</div>
+      <div class="new-text">Бренды</div>
+      <div class="new-text">Косметика</div>
+      <div class="new-text">Автотовары</div>
+      <div class="new-text">Детям</div>
+      <div class="new-text">Красота и здоровья</div>
+      <div class="new-text">Товары для дома</div>
+      <div class="new-text">Подарки и праздник</div>
+      <div class="new-text">Еще...</div>
 </div>
 <hr/>
   <div class="cont_lg">
-        <div id="coteg">
-            @foreach ($categoris as $item)
-                <p onclick="categoriesGet('{{ $item->id }}')">
-                    {{ $item->name }}
+        <div  id="coteg">
+            @foreach (Category() as $item)
+                <p class="click_m" onclick="categoriesGet('{{ $item->id }}')">
+                  {{ $item->name }}
                 </p>
             @endforeach
         </div>
-            <div class="cont"></div>
+            <div class="cont" value="{{ $item->id }}"></div>
         </div>
   </div>
 
@@ -184,6 +229,7 @@
         <div id="inpg">Войти</div>
 
         <div id="end"><i>Восстановить пароль</i></div>
+
       </div>
 
     </div>
@@ -279,9 +325,10 @@
                   </div>
 
                   @if (Route::has('password.request'))
-                                          <a id="end" href="{{ route('password.request') }}">
+                                          <a id="end" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-dismiss="modal" aria-label="Close" href="{{ route('password.request') }}">
                                               Восстановить пароль
                                           </a>
+
                                       @endif
                 <button id="inpg">Войти</button>
 
@@ -488,10 +535,10 @@ tabItems.forEach(checkoutTabs)
                 let p=0
                 for (const item of data.datas){
                     p++
-                    $('.cont').append(`<div class="sub_coteg p`+p+`"><h3 class="h3">${item.name}</h3></div>`);
+                    $('.cont').append(`<div class="sub_coteg p`+p+`"><h3 class="h3 n_active">${item.name}</h3></div>`);
 
                        for(const item1 of item.child){
-                            $('.p'+p).append(`<p>${item1.name}</p>`);
+                            $('.p'+p).append(`<p value="${item1.id}">${item1.name}</p>`);
                         }
 
                    }
@@ -501,9 +548,51 @@ tabItems.forEach(checkoutTabs)
            })
        }
 
-
+       $(".click_m").click(function(){
+         if($(this).hasClass('active')){
+             $(this).removeClass('active')
+         }else{
+            $(".click_m").removeClass('active')
+            $(this).addClass('active')
+         }
+       });
   </script>
   @yield('script')
 </body>
 
 </html>
+
+
+{{-- modal --}}
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal-content2">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p style="color:black;font-weight: bold;">Восстановить пароль</p>
+            <form action="{{ route('password.email') }}" method="post">
+              @csrf
+              <div class="row mb-3 text-center12" style="display: flex;margin: 46px 0 0 33px;">
+                  <div class="col-md-6">
+                      <input id="email" type="email" class="new_input" @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" placeholder="Введите email*" autofocus>
+
+                      @error('email')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
+              </div>
+              <div class="row mb-0">
+                  <div class="col-md-6 offset-md-4">
+                      <button class="add-button">Обновить пароль</button>
+                  </div>
+              </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>

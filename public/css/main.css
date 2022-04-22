@@ -509,7 +509,7 @@ span{
     font-size: 1.3vw;
 }
 .hed{
-    max-width: 1400px!important;
+    max-width: 1400px;
 }
 .hed div{
     margin-right:17px;
@@ -517,5 +517,14 @@ span{
 }
 
 
-
-
+.new{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    font-size: 15px;
+    justify-content: center;
+}
+.new-text{
+    margin: 11px;
+    font-weight: 700;
+}

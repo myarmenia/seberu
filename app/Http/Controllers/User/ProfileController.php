@@ -26,8 +26,6 @@ class ProfileController extends Controller
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
         ]);
 
-
-        
         $user = User::find($id);
         $user->update([
             'name'=>$request->name,
@@ -60,14 +58,6 @@ class ProfileController extends Controller
 
     public function my_organization_update(Request $request ,$id){
 
-        // $validator = Validator::make($request->all(), [
-        //     'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
-        // ]);
-
-        // if ($validator->fails()) {
-        //     return response()->json($validator->errors());
-        // }
-
         $user = User::find($id);
         $user->update($request->except(''));
 
@@ -82,5 +72,10 @@ class ProfileController extends Controller
             'message'=> 'Ваше обновление успешно'
         ]);
     }
+
+     public function send_mail(){
+        $categoris= Category::where('parent_id',NULL)->get();
+         return view('user.update_password',compact('categoris'));
+     }
 
 }

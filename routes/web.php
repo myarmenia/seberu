@@ -45,6 +45,7 @@ Route::group(['prefix' => 'profile','middleware' => ['verified','auth']], functi
     Route::get('update_pass',[ProfileController::class,'update'])->name('update_pass');
     Route::get('myorganization',[ProfileController::class,'my_organization_show'])->name('myorganization');
     Route::post('update/{id}',[ProfileController::class,'my_organization_update'])->name('update');
+    Route::get('update_pass',[ProfileController::class,'send_mail'])->name('update_pass');
   });
 
   Route::group(['prefix' => 'cart','middleware' => ['guest']], function(){
