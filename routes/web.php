@@ -59,11 +59,9 @@ Route::group(['prefix' => 'profile','middleware' => ['verified','auth']], functi
 
 
 
-    Route::get('/cart',[CartController::class,'index'])->name('shop_cart');
+    // Route::get('/cart',[CartController::class,'index'])->name('shop_cart');
 
 
-
-  });
   Route::get('/single_product/{id}', [SingleProductController::class, 'index'])->name('single_product');
   Route::post('/add-to-cart',[CartController::class,'store'])->name('add_to_cart');
   Route::get('/cart',[CartController::class,'index'])->name('shop_cart');
