@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Color;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class SingleProductController extends Controller
 {
     public function index(Request $request,$id ){
+
 
         $categoris= Category::where('parent_id',NULL)->get();
         $product=Product::with('product_photos')->where('id',$id)->first();
@@ -24,7 +26,7 @@ class SingleProductController extends Controller
             }
         }
 
-       $like_product=Product::where([
+       $like_product=Product::with('product_photos')->where([
            ['id','!=',$product->id],
            ['category_id','=',$product->category->id],
            ])->get();

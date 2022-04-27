@@ -14,6 +14,7 @@ class FileController extends Controller
      */
     public function getFile(Request $request){
         $path = $request['path'];
+    
         return response()->file(Storage::path($path));
     }
 
