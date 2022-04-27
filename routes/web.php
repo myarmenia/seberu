@@ -18,7 +18,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Frontuser\indexController;
 use App\Http\Controllers\ShopCart\SingleProductController;
 use App\Http\Controllers\FileController;
-
+use App\Models\Cart;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,10 +35,11 @@ Route::get('/',[WelcomeController::class,'index'])->name('welcome');
 
 
 Route::get('get_categories', [CategoryController::class, 'getById'])->name('getCats');
-Route::get('/single_product/{id}', [SingleProductController::class, 'index'])->name('single_product');
+
 
 
 Auth::routes(['verify' => true]);
+
 
 Route::group(['prefix' => 'profile','middleware' => ['verified','auth']], function(){
     Route::get('/',[ProfileController::class,'index'])->name('profile');
@@ -48,11 +49,23 @@ Route::group(['prefix' => 'profile','middleware' => ['verified','auth']], functi
     Route::get('myorganization',[ProfileController::class,'my_organization_show'])->name('myorganization');
     Route::post('update/{id}',[ProfileController::class,'my_organization_update'])->name('update');
     Route::get('update_pass',[ProfileController::class,'send_mail'])->name('update_pass');
-  });
 
-  Route::group(['prefix' => 'cart','middleware' => ['guest']], function(){
-      Route::get('/',[CartController::class,'index'])->name('shop_cart');
+
+
+    Route::get('/cart',[CartController::class,'index'])->name('shop_cart');
+
+
+
   });
+  Route::get('/single_product/{id}', [SingleProductController::class, 'index'])->name('single_product');
+  Route::post('/add-to-cart',[CartController::class,'store'])->name('add_to_cart');
+  Route::get('/cart',[CartController::class,'index'])->name('shop_cart');
+
+//   Route::group(['prefix' => 'cart','middleware' => ['guest']], function(){
+//       Route::get('/',[CartController::class,'index'])->name('shop_cart');
+
+
+//   });
 
   Route::group(['prefix' => 'order','middleware' => ['guest']], function(){
       Route::get('/',[OrderController::class,'index'])->name('orders');
@@ -121,6 +134,9 @@ Route::group(['prefix' => 'ruler', 'middleware' => ['admin']], function(){
 
             Route::delete('/delete',[ProductProductController::class,'destroy'])->name('adminDeleteProduct');
         });
-        Route::get('get_file',[FileController::class,'getFile'])->name('getFile');
+
 
   });
+  Route::get('get_file',[FileController::class,'getFile'])->name('getFile');
+
+

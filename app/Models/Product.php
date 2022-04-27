@@ -31,5 +31,9 @@ class Product extends Model
     public function product_chars(){
         return $this->belongsToMany(Charact::class,'product_chars','product_id','chars_id')->withPivot('value');
     }
+    public function carts(){
+        return $this->hasMany(Cart::class);
+    }
+
 
 }

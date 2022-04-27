@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>@yield('title')</title>
   <link rel="stylesheet" href="{{asset('css/main.css')}}">
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
@@ -44,7 +45,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="{{asset('/css/singleproduct.css')}}">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
  @yield('style')
@@ -130,7 +131,10 @@
         </div>
         <div class="fnc">
           <div class="icns"><img src="{{asset('storage/main-images/orders.png')}}" style="height: 25px;margin-top: 5px;"><br />Заказы</div>
-          <div class="icns"><i class="fa fa-shopping-basket" style="font-size: 25px;color: grey;margin-top: 3px;"></i><br />Корзина</div>
+          <div class="icns">
+              <i class="fa fa-shopping-basket" style="font-size: 25px;color: grey;margin-top: 3px;"></i>
+              <span class="badge badge-danger badge-counter d-none"></span>
+              <br />Корзина</div>
           <div class="icns">
             @if(Auth::check())
                 <a href="{{route('profile')}}">
@@ -151,7 +155,7 @@
                </form>
             </div>
             @else
-                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal" style="height: 48px; width: 77px;background-color:#fff; outline: unset;">
+                <button type="button" class="btn btn-light" id="open_modal"  data-bs-toggle="modal" data-bs-target="#exampleModal" style="height: 48px; width: 77px;background-color:#fff; outline: unset;">
                 <img src="{{asset('storage/main-images/user.png')}}" style="height:20px"><br />
                 Вход
                 </button>
@@ -198,6 +202,7 @@
 
   </header>
   <section class="w-100">
+
     @yield('content')
   </section>
 
@@ -283,9 +288,13 @@
 
 <!-- <modal> -->
     <section>
+
         <div class="all_modals">
           <div class="modal fade show" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog" >
+
             <div class="modal-dialog modal-lg">
+
+
               <div class="modal-content">
                 <div class="modal-header">
                   <form method="POST" action="{{ route('login') }}">

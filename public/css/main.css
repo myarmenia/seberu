@@ -63,9 +63,7 @@ background: rgb(227 219 216);
     width: 273px;
     margin-top: 21px;
 }
-h4{
-    text-align: center;
-}
+
 #lnk{
 
     background-size: cover;
@@ -105,10 +103,6 @@ p{
     margin-bottom: 1rem!important;
     font-size: 1.5vw;
     word-break: break-all;
-}
-h3{
-    color:white
-
 }
 #rem> h3{
     margin-top:40px;

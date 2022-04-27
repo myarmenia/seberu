@@ -19,8 +19,11 @@ class Authenticate extends Middleware
             return redirect()->route('adminProfile');
         }
 
+
         if (! $request->expectsJson()) {
             return route('login');
         }
+
+      
     }
 }
