@@ -20,6 +20,7 @@ use App\Http\Controllers\ShopCart\SingleProductController;
 use App\Http\Controllers\FileController;
 use App\Models\Cart;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +31,7 @@ use App\Models\Cart;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 Route::get('/',[WelcomeController::class,'index'])->name('welcome');
 
@@ -49,6 +51,12 @@ Route::group(['prefix' => 'profile','middleware' => ['verified','auth']], functi
     Route::get('myorganization',[ProfileController::class,'my_organization_show'])->name('myorganization');
     Route::post('update/{id}',[ProfileController::class,'my_organization_update'])->name('update');
     Route::get('update_pass',[ProfileController::class,'send_mail'])->name('update_pass');
+
+    Route::get('shop_cart/{id}',[ProfileController::class,'index_shopcart'])->name('shop');
+   
+    Route::get('searchprice', [ProfileController::class, 'productshop'])->name('searchprice');
+  });
+
 
 
 

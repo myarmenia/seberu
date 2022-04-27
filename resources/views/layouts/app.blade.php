@@ -51,48 +51,6 @@
  @yield('style')
 </head>
 <body>
-    <style>
-        .active{
-            font-weight:bold!important;
-            color: black!important;
-        }
-        .modal-content2{
-        background-color: #fefefe;
-        margin: 15% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 721.27px;
-        height: 360px;
-        border-radius: 20px;
-        }
-        .form_input{
-            width: 298px;
-            height: 39px;
-        }
-       .offset-md-4 {
-        margin-left: 26.333333%;
-       }
-       .new_input {
-        width: 315px;
-        height: 39px;
-        }
-        .add-button {
-        background: linear-gradient(90deg, #5A64E0 0%, #BC21D8 106.25%);
-        border-radius: 5px;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 24px;
-        color: #FFFFFF;
-        width: 194.11px;
-        height: 58px;
-        left: 251px;
-        top: 928px;
-        margin: 20px 0 0 0;
-        }
-        .offset-md-4 {
-         margin-left: 22.333333%;
-       }
-    </style>
   <header>
 
     <section class="w-100">
@@ -107,7 +65,7 @@
             <div id="icn">
             <i class="material-icons"  id="icons" style="font-size:40px; position: relative; left: 1px">clear</i>
             <img src="{{asset('storage/main-images/Group 1 (1).png')}}" id="menu_img" class="myclick"></div>
-            <div class="catalog">Каталог</div></button>
+            <div class="catalog ppp">Каталог</div></button>
         </div>
 
         <div id="inp-gr" class="input-group">
@@ -122,7 +80,7 @@
             </li>
             <li><a class="dropdown-item" href="#">Separated link</a></li>
           </ul>
-          <input type="text" class="form-control ipt" placeholder="Введите название товара"
+          <input type="text" class="form-control ipt search" placeholder="Введите название товара"
             aria-label="Text input with 2 dropdown buttons">
           <button type="button" data-bs-toggle="dropdown" aria-expanded="false">Поиск</button>
           <ul class="dropdown-menu dropdown-menu-end">
@@ -130,12 +88,14 @@
           </ul>
         </div>
         <div class="fnc">
+
           <div class="icns"><img src="{{asset('storage/main-images/orders.png')}}" style="height: 25px;margin-top: 5px;"><br />Заказы</div>
           <div class="icns">
               <i class="fa fa-shopping-basket" style="font-size: 25px;color: grey;margin-top: 3px;"></i>
               <span class="badge badge-danger badge-counter d-none"></span>
               <br />Корзина</div>
           <div class="icns">
+
             @if(Auth::check())
                 <a href="{{route('profile')}}">
                     @csrf
@@ -244,45 +204,6 @@
 
 </div>
 </div>
-
-<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Large modal</button> -->
- {{-- -------------------------------------login modal start ----------------------------------------------------------}}
- {{-- <div class="modal-dialog modal-lg">
-<div class="modal fade show" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true"
-  role="dialog">
-
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="w-100 modal-title h4 text-center" id="exampleModalLabel">Вход</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-
-        <div class="input-group mb-3">
-          <input type="text" class=" psw form-control" placeholder="Введите email или телефон*"
-            aria-label="Recipient's username" aria-describedby="basic-addon2">
-        </div>
-        <div class="input-group mb-3">
-          <input type="text" class=" psw form-control  icn" placeholder="Введите пороль*"
-            aria-label="Recipient's username" aria-describedby="basic-addon2">
-          <span class="input-group-text" id="basic-addon2"><img src="../images/password.png"></span>
-        </div>
-
-        <div class="check">
-          <input type="checkbox" id="ve" name="vehi"><label id="check1" for="vehicle1">Запомнить</label>
-
-        </div>
-        <div id="inpg">Войти</div>
-        <div id="end"><i>Восстановить пароль</i></div>
-        <div data-bs-dismiss="modal" aria-label="Close"><u><button type="button" id="endd" class="btn btn-light"
-              data-bs-toggle="modal" data-bs-target="#exampleModalXl">Если у Вас еще нет аккаунта пройдите
-              регистрацию</button></u></div>
-      </div>
-
-    </div>
-  </div>
-
-</div> --}}
  {{-- --------------------------------------login modal end ------------------------------------------------------------}}
 </div>
 
@@ -457,6 +378,7 @@
               </div>
         </div>
       </section>
+
    {{-- modelEnd --}}
    <div class="bottom_menu">
     <div class="my_menu">
@@ -477,9 +399,9 @@
 
   <script src="{{asset('js/main.js')}}"></script>
   <script src="{{asset('js/reg_mod.js')}}"></script>
+  <script src="{{asset('js/categoryajax.js')}}"></script>
   <meta name="csrf-token" content="{{ csrf_token() }}" />
   <script>
-
     @error('login_error')
     $(window).on('load', function () {
             $('#exampleModal').modal('show');
@@ -492,85 +414,40 @@
         });
     @enderror
 
+    function categoriesGet(id){
+      $('.cont').html('')
+      var cat_id = id;
 
-    function hideShowEye(cl){
+         $.ajax({
+             url: "{{route('getCats')}}",
+             type: "GET",
+             data: {
+                 cat_id: cat_id
+             },
 
-      let atType = 'password';
-      atType = $('.' + cl).attr('type') == 'password' ? 'text' : 'password';
-      $('.' + cl).attr('type',atType);
+             success: function(data) {
+              let p=0
+              for (const item of data.datas){
+                  p++
+                  $('.cont').append(`<div class="sub_coteg p`+p+`"><h3 class="h3 n_active">${item.name}</h3></div>`);
 
-    }
+                     for(const item1 of item.child){
+                      let url = '{{ route("shop", ":id") }}';
+                       url = url.replace(':id', item1.id);
+                          $('.p'+p).append(`<a href="${url}"><p value="${item1.id}">${item1.name}</p></a>`);
+                      }
 
-const tabItems = Array.from(document.querySelectorAll('.tab-item'))
-const contentItems = Array.from(document.querySelectorAll('.content-item'))
-
-const clearActiveClass = (element, className = 'is-active') => {
-  element.find(item => item.classList.remove(`${ className }`))
-}
-
-const setActiveClass = (element, index, className = 'is-active') => {
-  element[index].classList.add(`${ className }`)
-}
-
-const checkoutTabs = (item, index) => {
-  item.addEventListener('click', () => {
-
-    if (item.classList.contains('is-active')) return
-    console.log(item)
-
-    clearActiveClass(tabItems)
-    clearActiveClass(contentItems)
-
-    setActiveClass(tabItems, index)
-    setActiveClass(contentItems, index)
-  })
-}
-
-tabItems.forEach(checkoutTabs)
+                 }
+             }
 
 
-
-       function categoriesGet(id){
-        $('.cont').html('')
-        var cat_id = id;
-
-           $.ajax({
-               url: "{{route('getCats')}}",
-               type: "GET",
-               data: {
-                   cat_id: cat_id
-               },
-               success: function(data) {
-                let p=0
-                for (const item of data.datas){
-                    p++
-                    $('.cont').append(`<div class="sub_coteg p`+p+`"><h3 class="h3 n_active">${item.name}</h3></div>`);
-
-                       for(const item1 of item.child){
-                            $('.p'+p).append(`<p value="${item1.id}">${item1.name}</p>`);
-                        }
-
-                   }
-               }
-
-
-           })
-       }
-
-       $(".click_m").click(function(){
-         if($(this).hasClass('active')){
-             $(this).removeClass('active')
-         }else{
-            $(".click_m").removeClass('active')
-            $(this).addClass('active')
-         }
-       });
+         })
+     }
   </script>
   @yield('script')
+  @include('footer-page.footer')
 </body>
-
 </html>
-
 
 {{-- modal --}}
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -605,3 +482,4 @@ tabItems.forEach(checkoutTabs)
       </div>
     </div>
   </div>
+{{-- End modal --}}
