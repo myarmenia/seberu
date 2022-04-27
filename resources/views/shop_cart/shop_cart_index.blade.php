@@ -85,11 +85,14 @@
         </ul>
         <p class="main-para dropdown-toggle">Показать еще</p>
         <ul class="main dropdown">
-            <label class="toggleSwitch" onclick="">
-                <input type="checkbox" />
-                <span>Новинки</span>
-                <a></a>
-            </label><br><br>
+
+                <label class="toggleSwitch" onclick="">
+                    <input type="checkbox" />
+                    <span>Новинки</span>
+                    <a></a>
+                </label><br><br>
+
+
             <label class="toggleSwitch" onclick="">
                 <input type="checkbox" />
                 <span>Товары со скидкой</span>

@@ -49,7 +49,6 @@ Route::group(['prefix' => 'profile','middleware' => ['verified','auth']], functi
     Route::post('update/{id}',[ProfileController::class,'my_organization_update'])->name('update');
     Route::get('update_pass',[ProfileController::class,'send_mail'])->name('update_pass');
     Route::get('shop_cart/{id}',[ProfileController::class,'index_shopcart'])->name('shop');
-    ////////
     Route::get('searchprice', [ProfileController::class, 'productshop'])->name('searchprice');
   });
 

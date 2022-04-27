@@ -85,9 +85,9 @@ class ProfileController extends Controller
         $categoris_show= Category::find($id);
         $categoris= Category::where('parent_id',NULL)->find($id);
         $Product = Product::where('category_id',$id)->get();
-        // $ProductCharact=ProductCharact::where('$Product')->get();
+        $ProductCharact=ProductCharact::all();
         // dd($ProductCharact);
-         return view('shop_cart.shop_cart_index',compact('categoris','Product','categoris_show'));
+         return view('shop_cart.shop_cart_index',compact('categoris','Product','categoris_show','ProductCharact'));
 
      }
 
@@ -100,7 +100,7 @@ class ProfileController extends Controller
       if($request->min_price && $request->max_price){
           $query = $query->where('sale_price','>=',$request->min_price);
           $query = $query->where('sale_price','<=',$request->max_price);
-      }
+        }
 
       $Product = $query->get();
 
