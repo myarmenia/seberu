@@ -16,7 +16,7 @@ class Charact extends Model
         return $this->belongsToMany(Category::class,'category_chars','characteristic_id','category_id');
     }
 
-    // public function products(){
-    //     return $this->belongsToMany(Product::class,'characteristic_product','product_id','charackteristic_id');
-    // }
+    public function products(){
+        return $this->belongsToMany(Product::class,'product_chars','product_id','chars_id','value')->withPivot('value');
+    }
 }
