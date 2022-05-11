@@ -13,7 +13,9 @@ class Cart extends Model
         'prod_id',
         'quantity',
         'product_quantity_price',
-        'product_color'
+        'product_color',
+        'total_price',
+        'token'
     ];
 
     public function users(){

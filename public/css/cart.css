@@ -1,0 +1,32 @@
+
+.cart{
+    border:1px solid #e2e2e2
+}
+
+.button_description{
+
+    background: linear-gradient(90deg, #5A64E0 0%, #BC21D8 106.25%);
+    border: none;
+    outline: none;
+
+}
+.total_price
+{
+    border:none
+}
+@media screen and (max-width: 1200px){
+    .items{
+
+        display:flex !important;
+        flex-direction: column !important;
+    }
+
+}
+@media screen and (max-width: 720px){
+    .cart_h4{
+
+       font-size: 16px !important;
+    }
+
+}
+

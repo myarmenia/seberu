@@ -7,10 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>@yield('title')</title>
+
   <link rel="stylesheet" href="{{asset('css/main.css')}}">
+
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
   <link rel="stylesheet" href="{{asset('css/reg_mod.css')}}">
   <link rel="stylesheet" href="{{asset('css/katalog.css')}}">
+  @yield('style')
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
   integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
@@ -48,7 +51,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
- @yield('style')
+
 </head>
 <body>
     <style>
@@ -92,6 +95,14 @@
         .offset-md-4 {
          margin-left: 22.333333%;
        }
+       @media screen and (max-width: 576px){
+            .single_product_parent{
+               
+                margin:unset!important;
+            }
+
+
+       }
     </style>
   <header>
 
@@ -132,7 +143,8 @@
         <div class="fnc">
           <div class="icns"><img src="{{asset('storage/main-images/orders.png')}}" style="height: 25px;margin-top: 5px;"><br />Заказы</div>
           <div class="icns">
-              <i class="fa fa-shopping-basket" style="font-size: 25px;color: grey;margin-top: 3px;"></i>
+           <a href= "{{route('shop_cart')}}">
+              <i class="fa fa-shopping-basket" style="font-size: 25px;color: grey;margin-top: 3px;"></i></a>
               <span class="badge badge-danger badge-counter d-none"></span>
               <br />Корзина</div>
           <div class="icns">
@@ -168,7 +180,7 @@
   </section>
 
   <section>
-    <div class="container d-flex " id="hed1">
+    <div class="container d-flex " id="hed1" >
       <div>Товары</div>
       <div>Услуги и развличения</div>
       <div>Отдых</div>
@@ -186,10 +198,14 @@
       <div class="new-text">Товары для дома</div>
       <div class="new-text">Подарки и праздник</div>
       <div class="new-text">Еще...</div>
-</div>
-<hr/>
+  </div>
+  <div class="mx-5 p-2 single_product_parent">
+      @yield('singleproductparent')
+  </div>
+
   <div class="cont_lg">
         <div  id="coteg">
+
             @foreach (Category() as $item)
                 <p class="click_m" onclick="categoriesGet('{{ $item->id }}')">
                   {{ $item->name }}
@@ -469,7 +485,8 @@
       <img src="{{asset('/storage/main-images/orders.png')}}" class="menu_img1" style="width: 27px; margin-left: 0;margin-top: 5px;">Заказы
     </div>
     <div class="my_menu">
-     <i class="fa fa-shopping-basket" style="    font-size: 27px;margin-top: 6px;color: grey;"></i>Корзина</div>
+        <a href="{{route('shop_cart')}}">
+     <i class="fa fa-shopping-basket" style="    font-size: 27px;margin-top: 6px;color: grey;"></i></a>Корзина</div>
     <div class="my_menu" data-bs-toggle="modal" data-bs-target="#exampleModal">
       <img src="{{asset('/storage/main-images/user.png')}}" style="font-size:27px; margin-top:4px;" class="menu_img2">Вход
     </div>

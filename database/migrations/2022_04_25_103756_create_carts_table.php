@@ -19,6 +19,9 @@ class CreateCartsTable extends Migration
             $table->unsignedBigInteger('prod_id');
             $table->string('quantity');
             $table->string('product_quantity_price');
+            $table->string('product_color')->nullable();
+            $table->integer('total_price');
+            $table->string('token')->default(0);
             $table->timestamps();
         });
     }
