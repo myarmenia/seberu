@@ -51,25 +51,19 @@ Route::group(['prefix' => 'profile','middleware' => ['verified','auth']], functi
     Route::get('shop_cart/{id}',[FilterController::class,'index_shopcart'])->name('shop');
   });
 //   filter
+
 Route::get('searchprice', [FilterController::class, 'productshop']);
 Route::get('search_mobile_name', [FilterController::class, 'search_mobile_name']);
 Route::get('search_mobile_number', [FilterController::class, 'search_mobilenumber']);
 Route::get('search_mobile_brand', [FilterController::class, 'search_mobile_brand']);
 
 
-
     Route::get('/cart',[CartController::class,'index'])->name('shop_cart');
     Route::post('/increase_product_count',[CartController::class,'increaseProductCount'])->name('increase_product_count');
     // Route::post('/declaration',[CartController::class,'declaretion'])->name('declaration');
     Route::delete('/remove-from-cart', [CartController::class,'delete'])->name('remove-from-cart');
     Route::post('/order',[ShopCartOrderController::class,'generateToken'])->name('order');
 
-
-    Route::get('/cart',[CartController::class,'index'])->name('shop_cart');
-    Route::post('/increase_product_count',[CartController::class,'increaseProductCount'])->name('increase_product_count');
-    // Route::post('/declaration',[CartController::class,'declaretion'])->name('declaration');
-    Route::delete('/remove-from-cart', [CartController::class,'delete'])->name('remove-from-cart');
-    Route::post('/order',[ShopCartOrderController::class,'generateToken'])->name('order');
 
 
     Route::get('/side',[CartController::class,'side'])->name('side');
