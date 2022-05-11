@@ -49,6 +49,7 @@ Route::group(['prefix' => 'profile','middleware' => ['verified','auth']], functi
     Route::get('shop_cart/{id}',[FilterController::class,'index_shopcart'])->name('shop');
   });
 //   filter
+
 Route::get('searchprice', [FilterController::class, 'productshop']);
 Route::get('search_mobile_name', [FilterController::class, 'search_mobile_name']);
 Route::get('search_mobile_number', [FilterController::class, 'search_mobilenumber']);
