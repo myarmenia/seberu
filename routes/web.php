@@ -13,8 +13,14 @@ use App\Http\Controllers\ShopCart\CartController;
 use App\Http\Controllers\User\Order\OrderController;
 use App\Http\Controllers\Category\Product\ProductController;
 use App\Http\Controllers\Category\CharactController;
+use App\Http\Controllers\Product\ProductController as ProductProductController;
 use App\Http\Controllers\WelcomeController;
-
+use App\Http\Controllers\Frontuser\indexController;
+use App\Http\Controllers\ShopCart\SingleProductController;
+use App\Http\Controllers\FileController;
+use App\Http\Controllers\ShopCart\LikeController;
+use App\Http\Controllers\ShopCart\OrderController as ShopCartOrderController;
+use App\Models\Cart;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,17 +35,43 @@ use App\Http\Controllers\WelcomeController;
 
 Route::get('/',[WelcomeController::class,'index'])->name('welcome');
 
+
 Route::get('get_categories', [CategoryController::class, 'getById'])->name('getCats');
+
+
 
 Auth::routes(['verify' => true]);
 
-Route::group(['prefix' => 'profile','middleware' => ['verified','auth','guest']], function(){
+
+Route::group(['prefix' => 'profile','middleware' => ['verified','auth']], function(){
     Route::get('/',[ProfileController::class,'index'])->name('profile');
+    Route::get('edit_show',[ProfileController::class,'edit_show'])->name('edit_show');
+    Route::post('store/{id}',[ProfileController::class,'store'])->name('store');
+    Route::get('update_pass',[ProfileController::class,'update'])->name('update_pass');
+    Route::get('myorganization',[ProfileController::class,'my_organization_show'])->name('myorganization');
+    Route::post('update/{id}',[ProfileController::class,'my_organization_update'])->name('update');
+    Route::get('update_pass',[ProfileController::class,'send_mail'])->name('update_pass');
+
+
+
+    Route::get('/cart',[CartController::class,'index'])->name('shop_cart');
+    Route::post('/increase_product_count',[CartController::class,'increaseProductCount'])->name('increase_product_count');
+    // Route::post('/declaration',[CartController::class,'declaretion'])->name('declaration');
+    Route::delete('/remove-from-cart', [CartController::class,'delete'])->name('remove-from-cart');
+    Route::post('/order',[ShopCartOrderController::class,'generateToken'])->name('order');
+
+    Route::get('/side',[CartController::class,'side'])->name('side');
   });
 
-  Route::group(['prefix' => 'cart','middleware' => ['guest']], function(){
-      Route::get('/',[CartController::class,'index'])->name('shop_cart');
-  });
+  Route::get('/single_product/{id}', [SingleProductController::class, 'index'])->name('single_product');
+  Route::post('/add-to-cart',[CartController::class,'store'])->name('add_to_cart');
+  Route::post('/like-product',[LikeController::class,'likeProduct'])->name('like_product');
+
+//   Route::group(['prefix' => 'cart','middleware' => ['guest']], function(){
+//       Route::get('/',[CartController::class,'index'])->name('shop_cart');
+
+
+//   });
 
   Route::group(['prefix' => 'order','middleware' => ['guest']], function(){
       Route::get('/',[OrderController::class,'index'])->name('orders');
@@ -64,6 +96,8 @@ Route::group(['prefix' => 'ruler', 'middleware' => ['admin']], function(){
             Route::delete('/delete',[CategoryController::class,'delete'])->name('deleteCategories')->middleware('permission:delete_category');
             Route::put('/update',[CategoryController::class,'update'])->name('updateCategories')->middleware('permission:edit_category');
             Route::patch('/spam',[CategoryController::class,'spam'])->name('spamCategories')->middleware('permission:edit_category');
+            Route::get('/edit/{id}',[CategoryController::class,'edit'])->name('editCategories')->middleware('permission:edit_category');
+            Route::put('category-characts',[CategoryController::class,'categoryCharacts'])->name('updateCategoriesCharact')->middleware('permission:edit_category');
           });
 
         Route::group(['prefix' => 'all_users'], function(){
@@ -87,9 +121,28 @@ Route::group(['prefix' => 'ruler', 'middleware' => ['admin']], function(){
                   Route::delete('/delete',[PermissionController::class,'delete'])->name('adminDeletePerm');
           });
 
-    Route::group(['prefix' => 'characteristics', 'middleware' => ['permission:roles_and_perms']], function(){
-        Route::get('/',[CharactController::class,'index'])->name('characts');
-        Route::post('/',[CharactController::class,'create'])->name('adminCreateCharact');
+        Route::group(['prefix' => 'characteristics', 'middleware' => ['permission:roles_and_perms']], function(){
+            Route::get('/',[CharactController::class,'index'])->name('characts');
+            Route::post('/',[CharactController::class,'create'])->name('adminCreateCharact');
 
-    });
+        });
+        Route::group(['prefix' => 'add_product','middleware' => ['permission:roles_and_perms']],function(){
+            Route::get('/',[ProductProductController::class,'index'])->name('retunAddProductForm');
+            Route::post('/adminGetSubcategory',[ProductProductController::class,'getSubcategory'])->name('adminGetSubcategory');
+            Route::post('/adminGetSubcategoryChild',[ProductProductController::class,'getSubcategoryChild'])->name('adminGetSubcategoryChild');
+            Route::post('/adminAddProduct',[ProductProductController::class,'store'])->name('adminAddProduct');
+        });
+        Route::group(['prefix'=>'all_product','middleware'=>['permission:roles_and_perms']],function(){
+            Route::get('/',[ProductProductController::class,'allProduct'])->name('adminAllProduct');
+            Route::get('/edit/{id}',[ProductProductController::class,'edit'])->name('adminEditProduct');
+            Route::post('/deletephoto',[ProductProductController::class,'deletePhoto'])->name('adminEditDeletePhoto');
+            Route::post('/update-product/{id}',[ProductProductController::class,'update'])->name('adminUpdateProduct');
+
+            Route::delete('/delete',[ProductProductController::class,'destroy'])->name('adminDeleteProduct');
+        });
+
+
   });
+  Route::get('get_file',[FileController::class,'getFile'])->name('getFile');
+
+

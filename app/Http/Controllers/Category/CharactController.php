@@ -13,7 +13,13 @@ class CharactController extends Controller
         return view('admin.characteristics.index',['characts' => $characts]);
     }
 
-    public function create(){
-        dd(11);
+    public function create(Request $request){
+        $createcharact=Charact::create([
+            "name"=>$request->name
+        ]);
+        if($createcharact){
+            return redirect()->back()->with('message','Характериста добавлено');
+
+        }
     }
 }

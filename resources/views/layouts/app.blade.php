@@ -5,11 +5,16 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>@yield('title')</title>
+
   <link rel="stylesheet" href="{{asset('css/main.css')}}">
+
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
   <link rel="stylesheet" href="{{asset('css/reg_mod.css')}}">
   <link rel="stylesheet" href="{{asset('css/katalog.css')}}">
+  @yield('style')
+
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
   integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
   crossorigin="anonymous"></script>
@@ -25,7 +30,9 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.js"
   integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
   integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -42,25 +49,75 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
- @yield('style')
+
 </head>
 <body>
+    <style>
+        .active{
+            font-weight:bold!important;
+            color: black!important;
+        }
+        .modal-content2{
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 721.27px;
+        height: 360px;
+        border-radius: 20px;
+        }
+        .form_input{
+            width: 298px;
+            height: 39px;
+        }
+       .offset-md-4 {
+        margin-left: 26.333333%;
+       }
+       .new_input {
+        width: 315px;
+        height: 39px;
+        }
+        .add-button {
+        background: linear-gradient(90deg, #5A64E0 0%, #BC21D8 106.25%);
+        border-radius: 5px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 24px;
+        color: #FFFFFF;
+        width: 194.11px;
+        height: 58px;
+        left: 251px;
+        top: 928px;
+        margin: 20px 0 0 0;
+        }
+        .offset-md-4 {
+         margin-left: 22.333333%;
+       }
+       @media screen and (max-width: 576px){
+            .single_product_parent{
+               
+                margin:unset!important;
+            }
+
+
+       }
+    </style>
   <header>
+
     <section class="w-100">
     <div id="cont" class="container d-flex">
 
       <div class="logo">
-        <img id="logo" src="{{asset('storage/main-images/logo.png')}}">
+        <a href="{{route('welcome')}}"><img id="logo" src="{{asset('storage/main-images/logo.png')}}"></a>
       </div>
       <div class="filter-div">
         <div class="kat">
-
           <button type="button" class="btn1"  autocomplete="off">
             <div id="icn">
-            <i class="material-icons" id="icons"
-            style="font-size:40px; position: relative; left: 1px">clear</i>
-            <img src="{{asset('storage/main-images/Group 1 (1).png')}}" id="menu_img"></div>
+            <i class="material-icons"  id="icons" style="font-size:40px; position: relative; left: 1px">clear</i>
+            <img src="{{asset('storage/main-images/Group 1 (1).png')}}" id="menu_img" class="myclick"></div>
             <div class="catalog">Каталог</div></button>
         </div>
 
@@ -85,28 +142,45 @@
         </div>
         <div class="fnc">
           <div class="icns"><img src="{{asset('storage/main-images/orders.png')}}" style="height: 25px;margin-top: 5px;"><br />Заказы</div>
-          <div class="icns"><i class="fa fa-shopping-basket" style="font-size: 25px;color: grey;margin-top: 3px;"></i><br />Корзина</div>
+          <div class="icns">
+           <a href= "{{route('shop_cart')}}">
+              <i class="fa fa-shopping-basket" style="font-size: 25px;color: grey;margin-top: 3px;"></i></a>
+              <span class="badge badge-danger badge-counter d-none"></span>
+              <br />Корзина</div>
           <div class="icns">
             @if(Auth::check())
-              <form class="" action="{{route('logout')}}" method="post">
-                @csrf
-                  <input type="submit" name="" value="Logout">
-              </form>
+                <a href="{{route('profile')}}">
+                    @csrf
+                <button class="btn btn-light" style="height:53px; width: 77px; background-color:#fff; outline: unset;">
+                    <img src="{{asset('storage/main-images/gotologin.png')}}" style="height:20px"><br />
+                    Профиль
+                </button>
+                </a>
+            </div>
+            <div class="icns">
+                <form class="" action="{{route('logout')}}" method="post">
+                    @csrf
+                   <button class="btn btn-light" style="height:53px; width: 77px; background-color:#fff; outline: unset;">
+                    <img src="{{asset('storage/main-images/images.png')}}" style="height:20px"><br />
+                       logout
+                   </button>
+               </form>
+            </div>
             @else
-            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal" style="height: 48px; width: 77px;">
-            <img src="{{asset('storage/main-images/user.png')}}" style="height:20px"><br />
-            Вход
-            </button>
+                <button type="button" class="btn btn-light" id="open_modal"  data-bs-toggle="modal" data-bs-target="#exampleModal" style="height: 48px; width: 77px;background-color:#fff; outline: unset;">
+                <img src="{{asset('storage/main-images/user.png')}}" style="height:20px"><br />
+                Вход
+                </button>
             @endif
-        </div>
+
         </div>
       </div>
     </div>
-    <div class="cat_icon"><i class="fa fa-bars" style="font-size:36px"></i></div>
+    {{-- <div class="cat_icon"><i class="fa fa-bars" style="font-size:36px"></i></div> --}}
   </section>
 
   <section>
-    <div class="container d-flex " id="hed1">
+    <div class="container d-flex " id="hed1" >
       <div>Товары</div>
       <div>Услуги и развличения</div>
       <div>Отдых</div>
@@ -114,56 +188,39 @@
       <div>Отдахни в СЕБЕ!</div>
     </div>
   </section>
+  <div class="new">
+      <div class="new-text">Краснадар</div>
+      <div class="new-text">Бренды</div>
+      <div class="new-text">Косметика</div>
+      <div class="new-text">Автотовары</div>
+      <div class="new-text">Детям</div>
+      <div class="new-text">Красота и здоровья</div>
+      <div class="new-text">Товары для дома</div>
+      <div class="new-text">Подарки и праздник</div>
+      <div class="new-text">Еще...</div>
+  </div>
+  <div class="mx-5 p-2 single_product_parent">
+      @yield('singleproductparent')
+  </div>
 
   <div class="cont_lg">
-        <div id="coteg">
-            @foreach ($categoris as $item)
-                <p onclick="categoriesGet('{{ $item->id }}')">
-                    {{ $item->name }}
+        <div  id="coteg">
+
+            @foreach (Category() as $item)
+                <p class="click_m" onclick="categoriesGet('{{ $item->id }}')">
+                  {{ $item->name }}
                 </p>
             @endforeach
         </div>
-
-
-            <div class="cont"></div>
-      </div>
-
+            <div class="cont" value="{{ $item->id }}"></div>
+        </div>
   </div>
-
-
 
   </header>
   <section class="w-100">
+
     @yield('content')
   </section>
-
-  <footer>
-    <div id="parent1">
-      <div class="n1">
-        <span class="sp"><dark>Покупателям</dark></span><br >
-        <span>Обратная связь</span><br >
-        <span>О себе</span><br >
-        <span>Возвраты</span>
-      </div>
-      <div  class="n2">
-        <span class="sp"><dark>Сотрудничество</dark></span><br >
-        <span>Личный Кабинет магазина</span><br >
-        <span>Подключение магазина</span><br >
-        <span>Производителям</span><br >
-        <span>Партнерская программа</span><br >
-        <span>Новости компании</span>
-      </div>
-      <div class="n1">
-        <span class="sp">Помощь</span><br >
-        <span>Как сделать заказ</span><br >
-        <span>Доставка</span><br >
-        <span>Оплата</span><br >
-        <span>Контакты</span><br >
-        <span>Безопасность</span>
-      </div>
-    </div>
-    <section id="sect"><span id="pp1">2021</span></section>
-  </footer>
 
   <!-- Modal -->
   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -191,7 +248,9 @@
 
         </div>
         <div id="inpg">Войти</div>
+
         <div id="end"><i>Восстановить пароль</i></div>
+
       </div>
 
     </div>
@@ -201,10 +260,13 @@
 
 </div>
 </div>
+
 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Large modal</button> -->
+ {{-- -------------------------------------login modal start ----------------------------------------------------------}}
+ {{-- <div class="modal-dialog modal-lg">
 <div class="modal fade show" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true"
   role="dialog">
-  <div class="modal-dialog modal-lg">
+
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="w-100 modal-title h4 text-center" id="exampleModalLabel">Вход</h5>
@@ -235,18 +297,24 @@
 
     </div>
   </div>
+
+</div> --}}
+ {{-- --------------------------------------login modal end ------------------------------------------------------------}}
 </div>
-</div>
+
 <!-- <modal> -->
     <section>
+
         <div class="all_modals">
           <div class="modal fade show" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog" >
+
             <div class="modal-dialog modal-lg">
+
+
               <div class="modal-content">
                 <div class="modal-header">
                   <form method="POST" action="{{ route('login') }}">
                     @csrf
-
                   <h5 class="w-100 modal-title h4 text-center" id="exampleModalLabel">Вход</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -282,9 +350,10 @@
                   </div>
 
                   @if (Route::has('password.request'))
-                                          <a id="end" href="{{ route('password.request') }}">
+                                          <a id="end" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-dismiss="modal" aria-label="Close" href="{{ route('password.request') }}">
                                               Восстановить пароль
                                           </a>
+
                                       @endif
                 <button id="inpg">Войти</button>
 
@@ -405,6 +474,23 @@
         </div>
       </section>
    {{-- modelEnd --}}
+   <div class="bottom_menu">
+    <div class="my_menu">
+      <i class="material-icons" id="ic"
+            style="font-size:40px; position: relative; left: 1px">clear</i>
+      <img src="{{asset('/storage/main-images/points.png')}}" class="menu1_img1">Каталог
+    </div>
+    <div class="my_menu"><i class="fa fa-search" style="font-size:32px; margin-top:5px;color:grey"></i>Поиск</div>
+    <div class="my_menu">
+      <img src="{{asset('/storage/main-images/orders.png')}}" class="menu_img1" style="width: 27px; margin-left: 0;margin-top: 5px;">Заказы
+    </div>
+    <div class="my_menu">
+        <a href="{{route('shop_cart')}}">
+     <i class="fa fa-shopping-basket" style="    font-size: 27px;margin-top: 6px;color: grey;"></i></a>Корзина</div>
+    <div class="my_menu" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <img src="{{asset('/storage/main-images/user.png')}}" style="font-size:27px; margin-top:4px;" class="menu_img2">Вход
+    </div>
+ </div>
 
   <script src="{{asset('js/main.js')}}"></script>
   <script src="{{asset('js/reg_mod.js')}}"></script>
@@ -475,11 +561,10 @@ tabItems.forEach(checkoutTabs)
                 let p=0
                 for (const item of data.datas){
                     p++
-                    $('.cont').append(`<div class="sub_coteg p`+p+`"><h3 class="h3">${item.name}</h3></div>`);
+                    $('.cont').append(`<div class="sub_coteg p`+p+`"><h3 class="h3 n_active">${item.name}</h3></div>`);
 
                        for(const item1 of item.child){
-
-                            $('.p'+p).append(`<p>${item1.name}</p>`);
+                            $('.p'+p).append(`<p value="${item1.id}">${item1.name}</p>`);
                         }
 
                    }
@@ -489,8 +574,51 @@ tabItems.forEach(checkoutTabs)
            })
        }
 
+       $(".click_m").click(function(){
+         if($(this).hasClass('active')){
+             $(this).removeClass('active')
+         }else{
+            $(".click_m").removeClass('active')
+            $(this).addClass('active')
+         }
+       });
   </script>
   @yield('script')
 </body>
 
 </html>
+
+
+{{-- modal --}}
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal-content2">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p style="color:black;font-weight: bold;">Восстановить пароль</p>
+            <form action="{{ route('password.email') }}" method="post">
+              @csrf
+              <div class="row mb-3 text-center12" style="display: flex;margin: 46px 0 0 33px;">
+                  <div class="col-md-6">
+                      <input id="email" type="email" class="new_input" @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" placeholder="Введите email*" autofocus>
+
+                      @error('email')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
+              </div>
+              <div class="row mb-0">
+                  <div class="col-md-6 offset-md-4">
+                      <button class="add-button">Обновить пароль</button>
+                  </div>
+              </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>

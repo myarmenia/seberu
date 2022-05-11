@@ -32,7 +32,7 @@
     margin-left: 15px;
     height: 47px;
     width: 730px;
-   
+
 }
 .fnc{
     display: flex;
@@ -43,7 +43,7 @@
     padding: 0
 }
 .icns{
-   
+
     /* border:1px solid; */
  width: 79px
 }
@@ -53,7 +53,7 @@
     background-color:rgb(204, 56, 204)! important;
     color: white;
     font-size:1.5vw;
-    
+
 }
 
 #inp-gr{
@@ -105,7 +105,7 @@ margin:25px
     margin-left: 25px;
     text-align: center;
     margin-top: 25px;
-    font-weight: 500; 
+    font-weight: 500;
 }
  #books{
      display:flex;
@@ -136,7 +136,7 @@ margin:25px
      background-size:cover;
      background-repeat: no-repeat;
  }
- 
+
 h4{
     text-align: center;
     font-size:2vw;
@@ -152,7 +152,7 @@ h4{
         display:flex;
         flex-wrap: wrap;
         /* border:1px solid; */
-         
+
 
 }
 .bks1{
@@ -185,7 +185,7 @@ p{
 }
 #four-dvs{
     display: flex;
-  
+
 }
 #four-dvs > div{
 height: 250px;
@@ -203,7 +203,7 @@ p{
     font-size: 1.2vw
 }
 .cnt{
-   
+
     height: 473px;
     /* border: 1px solid; */
     width: 87%;
@@ -242,7 +242,7 @@ p{
 }
 #second{
     display: flex;
-    
+
 }
 #imgs{
     height: 192px;
@@ -282,7 +282,7 @@ h6{
     width: 23%;
     /* border: 1px solid; */
     background-size:cover;
-    
+
 }
 #sums{
 background-image:url('sumsung.png')
@@ -301,7 +301,7 @@ background-image: url('honor.png')
 }
 #igr{
     background-image: url('igr.jpg')  ;
-    margin-left:34px 
+    margin-left:34px
 }
 #tre{
     background-image: url('tre.jpg') ;
@@ -316,26 +316,26 @@ p{
 }
 h3{
     color:white
-    
+
 }
 #rem> h3{
     margin-top:40px;
     text-align:center;
-   
+
 }
 #igr >h3{
     margin-top:40px;
-    text-align:center; 
-   
+    text-align:center;
+
 }
 #tre > h3{
     margin-top:120px;
-    text-align:center; 
-  
+    text-align:center;
+
 }
 #ntb > h3{
     margin-top:230px;
-    text-align:center; 
+    text-align:center;
     font-size: 1.5vw
 }
 footer{

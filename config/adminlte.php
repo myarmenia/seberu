@@ -283,6 +283,26 @@ return [
             'can' => 'roles_and_perms'
         ],
 
+        ['header' => 'Продукт'],
+        [
+            'text' => 'Добавить новый продукт',
+            'route'  => 'retunAddProductForm',
+
+
+        ],
+
+        [
+            'text' => 'Все продукты',
+            'route'  => 'adminAllProduct',
+
+
+        ],
+
+
+
+
+
+
 
     ],
 

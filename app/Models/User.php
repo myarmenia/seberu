@@ -34,6 +34,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'fio',
         'correspondent_account',
         'phone',
+        'image',
+        'company_image'
 
     ];
 
@@ -80,6 +82,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return  $query->where('name',$per);
       })->find($this->id);
 
+    }
+     public function carts(){
+        return $this->hasMany(Cart::class);
     }
 
 }

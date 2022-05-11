@@ -17,10 +17,12 @@ class CreateProductTable extends Migration
             $table->id();
             $table->unsignedBigInteger('category_id');
             $table->string('name');
+            $table->string('quantity');
             $table->bigInteger('price');
             $table->bigInteger('sale_price')->nullable();
             $table->longText('description')->nullable();
-            
+            $table->timestamps();
+
 
             $table->foreign('category_id')
             ->references('id')

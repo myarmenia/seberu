@@ -1,0 +1,264 @@
+.content {
+    margin: 0 0 80px 0;
+    /* max-width: 992px; */
+    padding: 20px;
+
+
+      display: flex;
+      flex-direction: row-reverse;
+      flex-wrap: wrap;
+      gap: 30px;
+
+  }
+  .ajax_message{
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(52, 163, 52);
+  }
+    span{
+       font-size: 15px;
+    }
+    .active1{
+        background: linear-gradient(90deg, #5A64E0 0%, #BC21D8 106.25%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        margin: 0 0 0 25px;
+    }
+    .add-button{
+        background: linear-gradient(90deg, #5A64E0 0%, #BC21D8 106.25%);
+        border-radius: 5px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 24px;
+        color: #FFFFFF;
+        width: 194.11px;
+        height: 58px;
+        left: 251px;
+        top: 928px;
+        margin: 20px 0 0 0;
+    }
+    .active{
+        background: linear-gradient(90deg, #5A64E0 0%, #BC21D8 106.25%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+
+
+    }
+    .input{
+        position: absolute;
+        width: 458px;
+        height: 58px;
+        left: 601px;
+        top: 270px;
+        background: #FFFFFF;
+        border: 1px solid #9E9E9E;
+        box-sizing: border-box;
+        border-radius: 5px;
+    }
+    .main-content2 a{
+        color: black;
+        text-decoration: none;
+    }
+  .main-content {
+      flex: 1;
+  }
+
+  .main-content-border-left{
+    border-right: 1px solid #BFBFBF;;
+    height: 350px;
+  }
+    .content1{
+        display: flex;
+        flex-direction: column;
+        margin: 31px 0 0 0;
+  }
+  .profile_name{
+    font-family: 'Segoe UI';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 29px;
+  }
+  .sub-content {
+
+      align-self: flex-start;
+      background-color: #fff;
+      margin: 10px 0 20px;
+      padding: 20px;
+      position: sticky;
+      top: 25px;
+      width:357px;
+      border: 1px solid #BFBFBF;
+
+  }
+  .main-para{
+    text-align: inherit;
+    color:#000000;
+    font-family: 'Segoe UI';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 14px;
+
+  }
+  .main a{
+      color:black;
+      text-decoration: none;
+  }
+    .content1 a:focus{
+    border:none;
+    color:black;
+    box-shadow:none!important;
+    }
+.back-button{
+    background: linear-gradient(90deg, #5A64E0 0%, #BC21D8 106.25%);
+    border-radius: 5px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #FFFFFF;
+    width: 194.11px;
+    height: 58px;
+    left: 251px;
+    top: 928px;
+    margin:15px 0 0 0;
+}
+.img{
+    border: 1px solid #BFBFBF;
+    width: 248px;
+    height: 230px;
+    text-align: center;
+    overflow: hidden;
+}
+.profile_user{
+    display: flex;
+}
+.user_name{
+    text-align: inherit;
+    color: #000000;
+    font-family: 'Segoe UI';
+    font-style: normal;
+    margin: 22px 0 0 7px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 14px;
+}
+.img_sidebar{
+    background: #C4C4C4;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.file_add{
+    margin: 90px 0 0 20px;
+}
+.form-control{
+    width: 77%;
+}
+
+.addRegForm{
+    overflow: scroll;
+    height: 500px;
+}
+@media screen and (min-device-width: 375px) and (max-device-width: 768px) {
+    .content{
+        margin: 0 auto;
+        /* max-width: 992px; */
+        padding: 20px;
+        display: flex;
+        flex-direction: column-reverse;
+        flex-wrap: nowrap;
+        gap: 30px;
+    }
+    .main-content-border-left{
+        border-right:none;
+    }
+    .sub-content{
+        align-self: flex-start;
+        background-color: #fff;
+        margin: 10px 0 20px;
+        padding: 20px;
+        position: sticky;
+        top: 25px;
+        width: 302px;
+        border: 1px solid #BFBFBF;
+    }
+}
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+
+      /* Modal Content/Box */
+      .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 721.27px;
+        height: 300px;
+        border-radius: 20px;
+      }
+
+      /* The Close Button */
+      .close {
+        color: #aaa;
+        display: flex;
+        font-size: 28px;
+        font-weight: bold;
+        justify-content: flex-end;
+      }
+
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .modal_button{
+        background-color: #fff;
+        outline: none;
+        border: navajowhite;
+        text-align: inherit;
+        font-weight: 500;
+      }
+      .text-center12{
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .new_input{
+        width: 315px;
+        height: 39px;
+        margin: 30px 0 0px 0px;
+      }
+
+
+
+
+
+
+
+
+
+
+
+      /* ccscdcsdcdsc */
+
+      
