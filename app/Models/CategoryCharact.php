@@ -12,6 +12,6 @@ class CategoryCharact extends Model
     public $table = 'category_chars';
 
     public function charact(){
-        return $this->hasOne(Charact::class,'id','characteristic_id');
+        return $this->hasOne(Charact::class,'id','characteristic_id', 'value');
     }
 }

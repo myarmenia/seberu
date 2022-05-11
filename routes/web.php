@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\FilterController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\Admin\AdminEditUserController;
@@ -20,7 +21,6 @@ use App\Http\Controllers\ShopCart\SingleProductController;
 use App\Http\Controllers\FileController;
 use App\Models\Cart;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,16 +32,11 @@ use App\Models\Cart;
 |
 */
 
-
 Route::get('/',[WelcomeController::class,'index'])->name('welcome');
-
 
 Route::get('get_categories', [CategoryController::class, 'getById'])->name('getCats');
 
-
-
 Auth::routes(['verify' => true]);
-
 
 Route::group(['prefix' => 'profile','middleware' => ['verified','auth']], function(){
     Route::get('/',[ProfileController::class,'index'])->name('profile');
@@ -51,10 +46,13 @@ Route::group(['prefix' => 'profile','middleware' => ['verified','auth']], functi
     Route::get('myorganization',[ProfileController::class,'my_organization_show'])->name('myorganization');
     Route::post('update/{id}',[ProfileController::class,'my_organization_update'])->name('update');
     Route::get('update_pass',[ProfileController::class,'send_mail'])->name('update_pass');
-
-    Route::get('shop_cart/{id}',[ProfileController::class,'index_shopcart'])->name('shop');
-    Route::get('searchprice', [ProfileController::class, 'productshop'])->name('searchprice');
+    Route::get('shop_cart/{id}',[FilterController::class,'index_shopcart'])->name('shop');
   });
+//   filter
+Route::get('searchprice', [FilterController::class, 'productshop']);
+Route::get('search_mobile_name', [FilterController::class, 'search_mobile_name']);
+Route::get('search_mobile_number', [FilterController::class, 'search_mobilenumber']);
+Route::get('search_mobile_brand', [FilterController::class, 'search_mobile_brand']);
 
 
 

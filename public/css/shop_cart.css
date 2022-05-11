@@ -5,14 +5,19 @@
     margin-bottom: 0rem!important;
     font-size: 18px;
     text-align: inherit;
+    color:#000;
 }
+
 .ml-lg-3, .mx-lg-3{
-    margin-left: 15rem!important;
+    margin-left: 14rem!important;
+
 }
 .mt-50 {
     margin-top: 50px
 }
-
+.respncive{
+    margin-left: 12rem!important;
+}
 .mb-50 {
     margin-bottom: 50px
 }
@@ -127,7 +132,7 @@ color:#fff;
       align-self: flex-start;
       background-color: #fff;
       margin: 10px 0 20px;
-      padding:11px;
+      padding: 20px;
       position: sticky;
       top: 25px;
       width:357px;
@@ -141,8 +146,11 @@ color:#fff;
     font-weight: 700;
     font-size: 16px;
     line-height: 14px;
-    margin: 20px 0 0 0;
 
+  }
+  .row12{
+    width: 200px;
+    margin: 0px 0px 39px 0;
   }
   .main a{
       color:black;
@@ -576,5 +584,83 @@ color:#fff;
         margin: 0 0px 0px -30px;
       }
 
+      .new_main{
+          margin: 20px 0 0 0 ;
+      }
+      .side_bar{
+          display: none;
+      }
+      .close_close{
+          display: none;
+      }
+      @media screen and (min-width: 375px) and (max-width: 700px) {
+        .side_bar{
+        display: block;
+        }
+        .respncive{
+         margin-left: 0rem!important;
+        }
+        .close_close{
+        display: block;
+        font-size: 24px;
+        float: right;
+        position: relative;
+        top: -15px;
+        color: black;
+        }
+        .main{
+        text-align: initial;
+        color: black;
+        margin: 0 0px 0px 0px;
+        font-family: 'Segoe UI';
+        font-style: normal;
+        font-weight: 600;
+        }
+        .main-para{
+        text-align: initial;
+        color: #000000;
+        font-family: 'Segoe UI';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 14px;
+        }
+      .sideNav {
+        position: fixed;
+        top: 3em;
+        left: 0;
+        width: 70%;
+        height: 81%;
+        background-color: #FFF;
+        text-align: center;
+        overflow: auto;
+        transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        transform: translateX(-100%);
+        -webkit-transition: -webkit-transform 0.6s ease;
+        transition: transform 0.6s ease;
+      }
 
-      /*  End Toggle Switch  */
+      .sideNav.open {
+        transform: translateX(0);
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
+      }
+
+      }
+      .product_color{
+        display: flex;
+        flex-direction: row;
+        /* width: 35%; */
+        justify-content: space-around;
+      }
+      .all_color{
+        display: flex;
+        width: 41%;
+      }
+      .color_div{
+          width: 60%;
+      }
+
