@@ -7,10 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>@yield('title')</title>
+
   <link rel="stylesheet" href="{{asset('css/main.css')}}">
+
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
   <link rel="stylesheet" href="{{asset('css/reg_mod.css')}}">
   <link rel="stylesheet" href="{{asset('css/katalog.css')}}">
+  @yield('style')
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
   integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
@@ -48,9 +51,61 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
- @yield('style')
+
 </head>
 <body>
+
+    <style>
+        .active{
+            font-weight:bold!important;
+            color: black!important;
+        }
+        .modal-content2{
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 721.27px;
+        height: 360px;
+        border-radius: 20px;
+        }
+        .form_input{
+            width: 298px;
+            height: 39px;
+        }
+       .offset-md-4 {
+        margin-left: 26.333333%;
+       }
+       .new_input {
+        width: 315px;
+        height: 39px;
+        }
+        .add-button {
+        background: linear-gradient(90deg, #5A64E0 0%, #BC21D8 106.25%);
+        border-radius: 5px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 24px;
+        color: #FFFFFF;
+        width: 194.11px;
+        height: 58px;
+        left: 251px;
+        top: 928px;
+        margin: 20px 0 0 0;
+        }
+        .offset-md-4 {
+         margin-left: 22.333333%;
+       }
+       @media screen and (max-width: 576px){
+            .single_product_parent{
+               
+                margin:unset!important;
+            }
+
+
+       }
+    </style>
+
   <header>
 
     <section class="w-100">
@@ -91,7 +146,8 @@
 
           <div class="icns"><img src="{{asset('storage/main-images/orders.png')}}" style="height: 25px;margin-top: 5px;"><br />Заказы</div>
           <div class="icns">
-              <i class="fa fa-shopping-basket" style="font-size: 25px;color: grey;margin-top: 3px;"></i>
+           <a href= "{{route('shop_cart')}}">
+              <i class="fa fa-shopping-basket" style="font-size: 25px;color: grey;margin-top: 3px;"></i></a>
               <span class="badge badge-danger badge-counter d-none"></span>
               <br />Корзина</div>
           <div class="icns">
@@ -128,7 +184,7 @@
   </section>
 
   <section>
-    <div class="container d-flex " id="hed1">
+    <div class="container d-flex " id="hed1" >
       <div>Товары</div>
       <div>Услуги и развличения</div>
       <div>Отдых</div>
@@ -146,10 +202,14 @@
       <div class="new-text">Товары для дома</div>
       <div class="new-text">Подарки и праздник</div>
       <div class="new-text">Еще...</div>
-</div>
-<hr/>
+  </div>
+  <div class="mx-5 p-2 single_product_parent">
+      @yield('singleproductparent')
+  </div>
+
   <div class="cont_lg">
         <div  id="coteg">
+
             @foreach (Category() as $item)
                 <p class="click_m" onclick="categoriesGet('{{ $item->id }}')">
                   {{ $item->name }}
@@ -394,7 +454,8 @@
         <i class="fa fa-bars nav-toggle side_bar" style="font-size:32px; margin-top:5px;color:grey"></i>боковое
     </div>
     <div class="my_menu">
-     <i class="fa fa-shopping-basket" style="    font-size: 27px;margin-top: 6px;color: grey;"></i>Корзина</div>
+        <a href="{{route('shop_cart')}}">
+     <i class="fa fa-shopping-basket" style="    font-size: 27px;margin-top: 6px;color: grey;"></i></a>Корзина</div>
     <div class="my_menu" data-bs-toggle="modal" data-bs-target="#exampleModal">
       <img src="{{asset('/storage/main-images/user.png')}}" style="font-size:27px; margin-top:4px;" class="menu_img2">Вход
     </div>

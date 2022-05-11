@@ -6,17 +6,32 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Color;
+use App\Models\OrderItem;
 use App\Models\Product;
+use App\Services\CategoryService;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class SingleProductController extends Controller
 {
+
+    public $categoryServ;
+
+    public function __construct(){
+      $this->categoryServ = new CategoryService;
+    }
+
+
+
     public function index(Request $request,$id ){
+
 
 
         $categoris= Category::where('parent_id',NULL)->get();
         $product=Product::with('product_photos')->where('id',$id)->first();
-//    dd($product->category->characts);
+        $parents = $this->categoryServ->getParents($product->category_id);
+   
+
 
         $color=Color::all();
         $color_char=[];
@@ -30,6 +45,15 @@ class SingleProductController extends Controller
            ['id','!=',$product->id],
            ['category_id','=',$product->category->id],
            ])->get();
-        return  view('shop_cart.single-product',compact('categoris','product','color_char','like_product'));
+
+
+        $best_seller=OrderItem::groupBy('prod_id')
+                    ->selectRaw('sum(quantity) as sum,prod_id as prod_id')
+                    ->get();
+
+
+
+
+        return  view('shop_cart.single-product',compact('categoris','product','color_char','like_product','best_seller','parents'));
     }
 }
