@@ -11,6 +11,8 @@ class CreateCartsTable extends Migration
      *
      * @return void
      */
+
+     
     public function up()
     {
         Schema::create('carts', function (Blueprint $table) {
