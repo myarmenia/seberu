@@ -80,7 +80,7 @@ Route::group(['prefix' => 'profile','middleware' => ['verified','auth']], functi
   Route::group(['prefix' => 'product'], function(){
       Route::get('/',[ProductController::class,'index'])->name('product');
   });
-
+ 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
