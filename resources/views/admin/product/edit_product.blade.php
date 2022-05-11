@@ -88,7 +88,7 @@
                  @else
 
                     <div class='form-group col-12'>
-                        
+
                         <label for='productsize'> {{$item->name}}</label>
                         @foreach ($product['product_chars'] as $key )
                              @if ($key->pivot->chars_id == $item->id)
@@ -133,7 +133,7 @@
             </div>
             <div id="previmg" class="d-flex">
                 @foreach ($product->product_photos as  $key)
-                    <div id='a{{$key->id}}' class='m-2' style='height:150px;width:150px'><img src="{{route('getFile',['path' => $key->img_path ?: null])}}" class='w-75'><span class='removefromdb m-2' style='position:absolute;font-size:25px' data-attr='{{$key->id}}'>x</span></div>
+                    <div id='a{{$key->id}}' class='d-flex m-2' style='height:150px;width:150px'><img src="{{route('getFile',['path' => $key->img_path ?: null])}}"><span class='removefromdb m-2' style='position:absolute;font-size:25px' data-attr='{{$key->id}}'>x</span></div>
                 @endforeach
             </div>
 

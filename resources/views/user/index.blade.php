@@ -5,7 +5,7 @@
     margin-left: 32.333333%;
 }
 </style>
-<main class="content">
+<main class="content" style="border:1px solid red">
     <section class="main-content">
         <div class="content1">
            <div class="img">
@@ -27,7 +27,7 @@
             <a href=""><span>Удалить аккаунт </span></a>
         </div>
     </section>
-    <section class="main-content main-content-border-left">
+    <section class="main-content main-content-border-left" style="border:1px solid green">
         <div class="content1">
             <span>Имя</span>
             <span class="profile_name">{{Auth::user()->name}}</span>

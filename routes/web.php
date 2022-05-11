@@ -18,6 +18,8 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Frontuser\indexController;
 use App\Http\Controllers\ShopCart\SingleProductController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\ShopCart\LikeController;
+use App\Http\Controllers\ShopCart\OrderController as ShopCartOrderController;
 use App\Models\Cart;
 
 
@@ -58,13 +60,19 @@ Route::group(['prefix' => 'profile','middleware' => ['verified','auth']], functi
 
 
 
+    Route::get('/cart',[CartController::class,'index'])->name('shop_cart');
+    Route::post('/increase_product_count',[CartController::class,'increaseProductCount'])->name('increase_product_count');
+    // Route::post('/declaration',[CartController::class,'declaretion'])->name('declaration');
+    Route::delete('/remove-from-cart', [CartController::class,'delete'])->name('remove-from-cart');
+    Route::post('/order',[ShopCartOrderController::class,'generateToken'])->name('order');
 
-    // Route::get('/cart',[CartController::class,'index'])->name('shop_cart');
+    Route::get('/side',[CartController::class,'side'])->name('side');
+  });
 
 
   Route::get('/single_product/{id}', [SingleProductController::class, 'index'])->name('single_product');
   Route::post('/add-to-cart',[CartController::class,'store'])->name('add_to_cart');
-  Route::get('/cart',[CartController::class,'index'])->name('shop_cart');
+  Route::post('/like-product',[LikeController::class,'likeProduct'])->name('like_product');
 
 //   Route::group(['prefix' => 'cart','middleware' => ['guest']], function(){
 //       Route::get('/',[CartController::class,'index'])->name('shop_cart');
@@ -79,7 +87,7 @@ Route::group(['prefix' => 'profile','middleware' => ['verified','auth']], functi
   Route::group(['prefix' => 'product'], function(){
       Route::get('/',[ProductController::class,'index'])->name('product');
   });
-
+ 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
