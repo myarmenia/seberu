@@ -58,12 +58,19 @@ Route::get('search_mobile_brand', [FilterController::class, 'search_mobile_brand
 
 
 
+    Route::get('/cart',[CartController::class,'index'])->name('shop_cart');
+    Route::post('/increase_product_count',[CartController::class,'increaseProductCount'])->name('increase_product_count');
+    // Route::post('/declaration',[CartController::class,'declaretion'])->name('declaration');
+    Route::delete('/remove-from-cart', [CartController::class,'delete'])->name('remove-from-cart');
+    Route::post('/order',[ShopCartOrderController::class,'generateToken'])->name('order');
+
 
     Route::get('/cart',[CartController::class,'index'])->name('shop_cart');
     Route::post('/increase_product_count',[CartController::class,'increaseProductCount'])->name('increase_product_count');
     // Route::post('/declaration',[CartController::class,'declaretion'])->name('declaration');
     Route::delete('/remove-from-cart', [CartController::class,'delete'])->name('remove-from-cart');
     Route::post('/order',[ShopCartOrderController::class,'generateToken'])->name('order');
+
 
     Route::get('/side',[CartController::class,'side'])->name('side');
   });
@@ -86,7 +93,7 @@ Route::get('search_mobile_brand', [FilterController::class, 'search_mobile_brand
   Route::group(['prefix' => 'product'], function(){
       Route::get('/',[ProductController::class,'index'])->name('product');
   });
-
+ 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
