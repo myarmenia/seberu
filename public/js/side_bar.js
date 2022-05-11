@@ -9,3 +9,10 @@ $(document).click(function(e){
      {$('.dropdown').slideUp(); }
  });
  });
+
+ $(function () {
+    $('.nav-toggle').on('click', function () {
+      $('.sideNav').toggleClass('open');
+    });
+  });
+

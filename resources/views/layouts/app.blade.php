@@ -135,7 +135,7 @@
             </li>
             <li><a class="dropdown-item" href="#">Separated link</a></li>
           </ul>
-          <input type="text" class="form-control ipt search" placeholder="Введите название товара"
+          <input  style="height: 49px;" type="text" class="form-control ipt search" placeholder="Введите название товара"
             aria-label="Text input with 2 dropdown buttons">
           <button type="button" data-bs-toggle="dropdown" aria-expanded="false">Поиск</button>
           <ul class="dropdown-menu dropdown-menu-end">
@@ -449,6 +449,9 @@
     <div class="my_menu"><i class="fa fa-search" style="font-size:32px; margin-top:5px;color:grey"></i>Поиск</div>
     <div class="my_menu">
       <img src="{{asset('/storage/main-images/orders.png')}}" class="menu_img1" style="width: 27px; margin-left: 0;margin-top: 5px;">Заказы
+    </div>
+     <div class="my_menu">
+        <i class="fa fa-bars nav-toggle side_bar" style="font-size:32px; margin-top:5px;color:grey"></i>боковое
     </div>
     <div class="my_menu">
         <a href="{{route('shop_cart')}}">
