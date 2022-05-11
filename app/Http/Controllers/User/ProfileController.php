@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\CategoryCharact;
+use App\Models\Product;
+use App\Models\ProductCharact;
+use App\Models\ProductPhoto;
 
 
 class ProfileController extends Controller
@@ -77,5 +81,7 @@ class ProfileController extends Controller
         $categoris= Category::where('parent_id',NULL)->get();
          return view('user.update_password',compact('categoris'));
      }
+
+
 
 }
