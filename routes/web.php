@@ -67,7 +67,7 @@ Route::group(['prefix' => 'profile','middleware' => ['verified','auth']], functi
     Route::post('/order',[ShopCartOrderController::class,'generateToken'])->name('order');
 
     Route::get('/side',[CartController::class,'side'])->name('side');
-  });
+
 
 
   Route::get('/single_product/{id}', [SingleProductController::class, 'index'])->name('single_product');
@@ -87,7 +87,7 @@ Route::group(['prefix' => 'profile','middleware' => ['verified','auth']], functi
   Route::group(['prefix' => 'product'], function(){
       Route::get('/',[ProductController::class,'index'])->name('product');
   });
- 
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
