@@ -22,6 +22,7 @@ use App\Http\Controllers\ShopCart\LikeController;
 use App\Http\Controllers\ShopCart\OrderController as ShopCartOrderController;
 use App\Models\Cart;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +33,7 @@ use App\Models\Cart;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 Route::get('/',[WelcomeController::class,'index'])->name('welcome');
 
@@ -52,6 +54,10 @@ Route::group(['prefix' => 'profile','middleware' => ['verified','auth']], functi
     Route::post('update/{id}',[ProfileController::class,'my_organization_update'])->name('update');
     Route::get('update_pass',[ProfileController::class,'send_mail'])->name('update_pass');
 
+    Route::get('shop_cart/{id}',[ProfileController::class,'index_shopcart'])->name('shop');
+    Route::get('searchprice', [ProfileController::class, 'productshop'])->name('searchprice');
+  });
+
 
 
     Route::get('/cart',[CartController::class,'index'])->name('shop_cart');
@@ -62,6 +68,7 @@ Route::group(['prefix' => 'profile','middleware' => ['verified','auth']], functi
 
     Route::get('/side',[CartController::class,'side'])->name('side');
   });
+
 
   Route::get('/single_product/{id}', [SingleProductController::class, 'index'])->name('single_product');
   Route::post('/add-to-cart',[CartController::class,'store'])->name('add_to_cart');

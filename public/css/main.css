@@ -522,3 +522,49 @@ span{
     margin: 11px;
     font-weight: 700;
 }
+
+.active{
+    font-weight:bold!important;
+    color: black!important;
+}
+.modal-content2{
+background-color: #fefefe;
+margin: 15% auto;
+padding: 20px;
+border: 1px solid #888;
+width: 721.27px;
+height: 360px;
+border-radius: 20px;
+}
+.form_input{
+    width: 298px;
+    height: 39px;
+}
+.offset-md-4 {
+margin-left: 26.333333%;
+}
+.new_input {
+width: 315px;
+height: 39px;
+}
+.add-button {
+background: linear-gradient(90deg, #5A64E0 0%, #BC21D8 106.25%);
+border-radius: 5px;
+font-weight: 400;
+font-size: 18px;
+line-height: 24px;
+color: #FFFFFF;
+width: 194.11px;
+height: 58px;
+left: 251px;
+top: 928px;
+margin: 20px 0 0 0;
+}
+.offset-md-4 {
+ margin-left: 22.333333%;
+}
+.icon{
+    margin: 0 0 0 8px;
+}
+
+

@@ -52,7 +52,6 @@
     </section>
     @include('User.sidebar_menu')
 </main>
-@include('footer-page.footer')
 {{-- modal --}}
 <div id="myModal" class="modal">
     <div class="modal-content">

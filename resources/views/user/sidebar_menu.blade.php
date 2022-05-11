@@ -44,19 +44,7 @@
     </ul>
   </section>
 </main>
-<script>
-    $(function() {
-       {$('.dropdown').slideUp(); }
-       $('.dropdown-toggle').css("font-weight", "500").click(function() { $(this).next('.dropdown').slideToggle();
-    });
-
-   $(document).click(function(e){
-      var target = e.target;
-        if (!$(target).is('.dropdown-toggle') && !$(target).parents().is('.dropdown-toggle'))
-        {$('.dropdown').slideUp(); }
-    });
-    });
-</script>
+<script src="{{asset('js/side_bar.js')}}"></script>
 
 
 

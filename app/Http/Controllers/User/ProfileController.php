@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Product;
+use App\Models\ProductCharact;
+use App\Models\ProductPhoto;
 
 
 class ProfileController extends Controller
@@ -77,5 +80,38 @@ class ProfileController extends Controller
         $categoris= Category::where('parent_id',NULL)->get();
          return view('user.update_password',compact('categoris'));
      }
+
+     public function index_shopcart($id){
+        $categoris_show= Category::find($id);
+        $categoris= Category::where('parent_id',NULL)->find($id);
+        $Product = Product::where('category_id',$id)->get();
+        $ProductCharact=ProductCharact::all();
+        // dd($ProductCharact);
+         return view('shop_cart.shop_cart_index',compact('categoris','Product','categoris_show','ProductCharact'));
+
+     }
+
+     public function productshop(Request $request)
+    {
+        $query = Product::orderBy('created_at','desc');
+      if($request->keyword){
+          $query = $query->where('title','like','%'.$keyword.'%');
+        }
+      if($request->min_price && $request->max_price){
+          $query = $query->where('sale_price','>=',$request->min_price);
+          $query = $query->where('sale_price','<=',$request->max_price);
+        }
+
+      $Product = $query->get();
+
+       dd($Product);
+
+
+        // return view('shop_cart.shop_cart_index', compact('products'));
+
+    }
+
+
+
 
 }
