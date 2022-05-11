@@ -65,6 +65,7 @@ Route::get('search_mobile_brand', [FilterController::class, 'search_mobile_brand
     Route::post('/order',[ShopCartOrderController::class,'generateToken'])->name('order');
 
 
+
     Route::get('/side',[CartController::class,'side'])->name('side');
   });
 
