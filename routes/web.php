@@ -57,7 +57,6 @@ Route::get('search_mobile_brand', [FilterController::class, 'search_mobile_brand
 
  
 
-
     // Route::get('/cart',[CartController::class,'index'])->name('shop_cart');
 
 
